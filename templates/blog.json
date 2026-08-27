@@ -1,0 +1,56 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "blog-template",
+      "custom_css": [
+        ".container {max-width: 915.3px;}",
+        ".banner {margin-top: 0;}",
+        ".article__title a {border-bottom: 2px solid #207bbf; color: #056fb7; padding-bottom: 0.5em; margin-bottom: 0.4rem; display: block; font-size: 0.85em;}",
+        ".blog__read-more-button {background: #056fb7; border-color: #056fb7; color: #fff;}",
+        ".blog__read-more-button:hover {background: #000;}",
+        ".image-element__wrap {max-width: 100% !important;}"
+      ],
+      "settings": {
+        "wide_display": false,
+        "subtitle": "",
+        "caption_content_background": "original",
+        "blog_posts_per_row": 3,
+        "blog_posts_per_page": 19,
+        "blog_tags": false,
+        "blog_author": false,
+        "read_time": false,
+        "blog_date": false,
+        "blog_comment_count": false,
+        "read_more_link": true,
+        "excerpt_display": "full_excerpt",
+        "toggle": false
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "wide_display": true,
+        "display_first_name": false,
+        "display_last_name": false,
+        "newsletter_title": "Subscribe",
+        "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more …</p>",
+        "newsletter_section_text_align": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "newsletter"
+  ]
+}

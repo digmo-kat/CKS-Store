@@ -1,0 +1,58 @@
+<section class="home-new-product-sec">
+  <div class="contianer">
+      <div class="home-new-product-main-head">
+          <h2 class="f-weight-800 secondary-heading c-light-back f-italc t-capitalize">{{ section.settings.main-head }}</h2>
+      </div>
+      <div class="multiple-items d-flex">
+        {% assign collection = collections[section.settings.select-coll] %}
+          {% for product in collection.products %}
+          <div class="home-new-product-main-block">
+              <div class="home-new-product-img">
+                  <a href="{{ product.url }}">
+                        <img src="{{ product.featured_image | img_url: "master" }}" alt="">
+                  </a>
+              </div>
+              <div class="home-new-product-content-wrpaer">
+                  <a href="{{ product.url }}" class="home-product-name">
+                      <h4 class="quaternary-heading f-weight-700 c-light-back">{{ product.title | truncatewords: 6 }}</h4>
+                  </a>
+                  <div class="home-new-product-price">
+                      <h3 class="tertiary-heading c-blue f-weight-800">{{ product.price | money }}</h3>
+                  </div>
+                  <div class="home-new-product-btn">
+                      <a href="{{ product.url }}" class="c-blue f-weight-600 primary-paragraph">
+                          View Product
+                          <!-- <img src="https://cdn.shopify.com/s/files/1/0737/1610/5472/files/arrow-right_1.svg?v=1735672266" alt=""> -->
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                      </a>
+                  </div>
+              </div>
+          </div>
+        {% endfor %}
+          
+      </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "New Products",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Main Heading",
+        "id": "main-head"
+      },
+      {
+        "type": "collection",
+        "label": "Select Collection",
+        "id": "select-coll"
+      }
+    ],
+    "presets": [
+      {
+        "name": "New Products"
+      }
+    ]
+  }
+{% endschema %}

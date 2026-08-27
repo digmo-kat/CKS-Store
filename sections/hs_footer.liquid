@@ -1,0 +1,167 @@
+<footer id="footer">
+            <div class="contianer">
+                <div class="footer-block-flex-area d-flex j-c-sp-between">
+                    <div class="footer-logo-area">
+                        <div class="footer-main-logo">
+                            <a href="{{ section.settings.footer-main-logo-link }}">
+                                <img src="{{ section.settings.footer-main-logo | img_url: "master" }}" alt="">
+                            </a>
+                        </div>
+                        <div class="footer-social-icon">
+                          {% for block in section.blocks %}
+                            {% if block.type == 'social-icons' %}
+                            <a href="{{ block.settings.social-icon-link }}">
+                              <i class="{{ block.settings.social-icon-class }}"></i>
+                              <span class="social-text">{{ block.settings.social-icon-text }}</span>
+                            </a>
+                            {% endif %}
+                          {% endfor %}
+                          
+                        </div>
+                      {% comment %}
+                        
+                        <div class="digital-logo">
+                            <a href="{{ section.settings.digital-logo-link }}">
+                                <img src="{{ section.settings.digital-logo | img_url: "master" }}" alt="">
+                            </a>
+                        </div>
+                      {% endcomment %}
+                    </div>
+                    <div class="footer-nav-area">
+                        <div class="footer-nav-inner-wraper">
+                            <h4 class="quaternary-heading c-light-back f-weight-800 t-uppercase f-italc">Utility</h4>
+                            <ul class="d-flex">
+                              {% for block in section.blocks %}
+                                {% if block.type == 'footer-nav' %}
+                                  {% for link in block.settings.footer-menu.links %}
+                                <li><a href="{{ link.url }}" class="f-weight-500 primary-paragraph t-capitalize">{{ link.title | escape }}</a></li>
+                                  {% endfor %}
+                                {% endif %}
+                              {% endfor %}
+                                <!-- <li><a href="" class="c-grey f-weight-500 primary-paragraph t-capitalize">Shipping Policy</a></li>
+                                <li><a href="" class="c-grey f-weight-500 primary-paragraph t-capitalize">Return Policy</a></li>
+                                <li><a href="" class="c-grey f-weight-500 primary-paragraph t-capitalize">Terms & Conditions</a></li>
+                                <li><a href="" class="c-grey f-weight-500 primary-paragraph t-capitalize">Contact Us</a></li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-sign-up-area">
+                        <div class="footer-sign-up-inner-area">
+                            <div class="footer-sign-up-form">
+                              <div class="klaviyo-form-RSGcSW"></div>
+                              {% comment %}
+                                
+                                {% form 'customer' %}
+                                    <div class="footer-sign-up-flexarea d-flex">
+                                        <input type="email" class="secondary-paragraph" placeholder="E-Mail Address" name="contact[email]">
+                                        <button type="submit" class="f-weight-500 primary-paragraph c-white">Subscribe</button>
+                                    </div>
+                                {% endform %}
+                              {% endcomment %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom-content">
+                    <div class="footer-bottom-content-flex-area d-flex j-c-sp-between">
+                        <p class="f-weight-500 secondary-paragraph c-light-back"> {{ section.settings.copyright-text }}</p>
+                        <span class="f-weight-500 secondary-paragraph c-light-back">
+                          {{ section.settings.digital-text }} {{ section.settings.digital-text-2 }}
+                          <a href="{{ section.settings.digital-logo-url }}" target="_blank">
+                            <img src="{{ section.settings.digital-logo-img | img_url: 'master' }}" width="" height="" /></a></span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+{% schema %}
+  {
+    "name": "Comet Footer",
+    "settings": [
+      {
+        "type": "image_picker",
+        "label": "Footer Main Logo",
+        "id": "footer-main-logo"
+      },
+      {
+        "type": "url",
+        "label": "Footer Main Logo Link",
+        "id": "footer-main-logo-link"
+      },
+      {
+        "type": "text",
+        "label": "News Letter Heading",
+        "id": "news-letter-head"
+      },
+      {
+        "type": "textarea",
+        "label": "News Letter Description",
+        "id": "news-letter-desc"
+      },
+      {
+        "type": "text",
+        "label": "Copyright Text",
+        "id": "copyright-text"
+      },
+      {
+        "type": "richtext",
+        "label": "Digital Text",
+        "id": "digital-text"
+      },
+      {
+        "type": "richtext",
+        "label": "Digital Text 2",
+        "id": "digital-text-2"
+      },
+      {
+        "type": "url",
+        "label": "Digital Logo URL",
+        "id": "digital-logo-url"
+      },
+      {
+        "type": "image_picker",
+        "label": "Digital Logo Image",
+        "id": "digital-logo-img"
+      }
+      
+    ],
+    "blocks": [
+      {
+        "type": "social-icons",
+        "name": "Social Icon Repeat",
+        "settings": [
+          {
+            "type": "text",
+            "label": "Social Icon Class",
+            "id": "social-icon-class",
+          },
+          {
+            "type": "url",
+            "label": "Social Icon Link",
+            "id": "social-icon-link",
+          },
+          {
+            "type": "text",
+            "label": "Social Icon Text",
+            "id": "social-icon-text",
+          }
+        ]
+      },
+      {
+        "type": "footer-nav",
+        "name": "Footer Nav",
+        "settings": [
+          {
+            "type": "link_list",
+            "label": "Footer Menu",
+            "id": "footer-menu"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Comet Footer"
+      }
+    ]
+  }
+{% endschema %}

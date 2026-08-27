@@ -1,0 +1,78 @@
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "{{ shop.url }}",
+          "name": "{{ 'general.breadcrumbs.home' | t }}"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          {% if collection %}
+            "@id": "{{ collection.url }}",
+            "name": "{{ collection.title }}"
+          {% else %}
+            "@id": "{{ routes.all_products_collection_url }}",
+            "name": "{{ collections.all.title }}"
+          {% endif %}
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "{{ product.url }}",
+          "name": "{{ product.title | escape }}"
+        }
+      }
+    ]
+  }
+</script>
+
+{% assign breadcrumb_parents = product.metafields.custom.breadcrumb_parent.value %}
+
+{% if breadcrumb_parents != '' %}
+<nav class="breadcrumbs">
+  <a href="{{ routes.root_url }}">Home </a>›
+
+  {% for root in breadcrumb_parents %}
+    {% assign current = root %}
+    {% assign trail = '' %}
+      {% assign link = '<a href="' | append: current.url.value | append: '">' | append: current.title.value | append: '</a>' %}
+      {% assign trail = link | append: ' › ' | append: trail %}
+      {% assign current = current.parent.value %}
+    {{ trail }}
+  {% endfor %}
+
+  <span>{{ product.title }}</span>
+</nav>
+{% else %}
+<div class="breadcrumb_text">
+  <a href="{{ routes.root_url }}" title="{{ shop.name | escape }}" class="breadcrumb_link">
+    <span>{{ 'general.breadcrumbs.home' | t }}</span>
+  </a>
+  <span class="breadcrumb-divider">/</span>
+  {% if collection and collection.title != 'Products' %}<!-- Q2Q2 {{ collection.handle }} -->
+    <a href="{{ collection.url }}" title="{{ collection.title | escape }}" class="breadcrumb_link">
+      <span>{{ collection.title }}</span>
+      </a>
+  {% elsif breadColls != blank %}
+    {{ breadColls }} <!-- here? 49  -->
+  {% else %}
+    <a href="{{ routes.all_products_collection_url }}" title="{{ collections.all.title }}" class="breadcrumb_link">
+      <span>{{ collections.all.title }}</span>
+      </a>
+  {% endif %}
+  <span class="breadcrumb-divider">/</span>
+  {% comment %}<a href="{{ product.url }}" class="breadcrumb_link">{% endcomment %}
+    <span style="font-weight:bold;">{{ product.title | escape }}</span>
+  {% comment %}</a>{% endcomment %}
+</div>
+{% endif %}

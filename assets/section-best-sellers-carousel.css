@@ -1,0 +1,312 @@
+.best-sellers__bg {
+  /* background: linear-gradient(135deg, var(--bs-bg-start, #1a3a5c) 0%, var(--bs-bg-end, #14263d) 100%); */
+
+  background: radial-gradient(51.75% 305.69% at 48.14% 48.42%, #1D71B9 0%, #1B1F23 100%) ;
+  padding-top: var(--bs-padding-top, 60px);
+  padding-bottom: var(--bs-padding-bottom, 60px);
+}
+
+.best-sellers__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.best-sellers__header {
+  margin-bottom: 40px;
+}
+
+.best-sellers__eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--bs-eyebrow, #FFF301);
+  margin: 0 0 4px;
+  letter-spacing: 0.02em;
+}
+
+.best-sellers__title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 1.1;
+  color: var(--bs-title, #FFFFFF);
+  margin: 0 0 8px;
+}
+
+.best-sellers__subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--bs-subtitle, #FFFFFF);
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* Carousel */
+.best-sellers__carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.best-sellers__track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 20px 0 10px;
+  flex: 1;
+}
+
+.best-sellers__track::-webkit-scrollbar {
+  display: none;
+}
+
+.best-sellers__slide {
+  flex: 0 0 calc(25% - 18px);
+  min-width: 220px;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+/* Large background numbers */
+.best-sellers__number {
+  position: absolute;
+  top: -10px;
+  right: 160px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 90px;
+  line-height: 1;
+  /* color: var(--bs-number, #FFFFFF); */
+  /* opacity: 0.08; */
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  background: linear-gradient(180deg, #1e81d5 33.65%, #1f5f95);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* Product card */
+.best-sellers__card {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 60px;
+}
+
+.best-sellers__card-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  position: relative;
+}
+
+.best-sellers__image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.best-sellers__product-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
+
+.best-sellers__placeholder {
+  width: 60%;
+  height: 60%;
+}
+
+/* Quick View overlay */
+.best-sellers__quick-view {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 20px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.best-sellers__card:hover .best-sellers__quick-view {
+  opacity: 1;
+}
+
+.best-sellers__quick-view-btn {
+  display: inline-block;
+  background-color: var(--bs-qv-bg, #FFF301);
+  color: var(--bs-qv-text, #1B1F23);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.best-sellers__card:hover .best-sellers__quick-view-btn {
+  transform: translateY(-2px);
+}
+
+/* Product info */
+.best-sellers__product-info {
+  padding: 16px 0 0;
+  margin-left: 60px;
+}
+
+.best-sellers__product-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.35;
+  margin: 0 0 8px;
+  color: var(--bs-title, #FFFFFF);
+}
+
+.best-sellers__product-title a ,.best-sellers__product-title a:visited{
+  color: inherit;
+  text-decoration: none;
+}
+
+.best-sellers__product-title a:hover {
+  text-decoration: underline;
+}
+
+.best-sellers__product-price {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--bs-price, #FFFFFF);
+  margin: 0;
+}
+
+/* Navigation arrows */
+.best-sellers__arrow {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  /* border: 2px solid rgba(255, 255, 255, 0.4); */
+  background: #0172BC;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  z-index: 2;
+  padding: 0;
+}
+
+.best-sellers__arrow:hover {
+  border-color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.best-sellers__arrow--prev {
+  margin-right: 16px;
+}
+
+.best-sellers__arrow--next {
+  margin-left: 16px;
+}
+
+.best-sellers__arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Bottom bar */
+.best-sellers__bottom-bar {
+  height: 0px;
+  background-color: var(--bs-bottom-bar, #1B1F23);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .best-sellers__slide {
+    flex: 0 0 calc(33.333% - 16px);
+    /* min-width: 200px; */
+  }
+
+  .best-sellers__number {
+    /* font-size: 120px; */
+    left: -12px;
+    right:unset;
+  }
+
+  .best-sellers__title {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 749px) {
+  .best-sellers__slide {
+    flex: 0 0 calc(50% - 12px);
+    /* min-width: 160px; */
+  }
+
+  .best-sellers__number {
+    font-size: 90px;
+    left: -12px;
+    right:unset;
+  }
+
+  .best-sellers__title {
+    font-size: 26px;
+  }
+
+  .best-sellers__arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .best-sellers__arrow--prev {
+    margin-right: 8px;
+  }
+
+  .best-sellers__arrow--next {
+    margin-left: 8px;
+  }
+
+  .best-sellers__carousel-wrapper {
+    margin: 0 -8px;
+  }
+}
+
+@media (max-width: 479px) {
+  .best-sellers__slide {
+    flex: 0 0 calc(90% - 12px);
+  }
+}

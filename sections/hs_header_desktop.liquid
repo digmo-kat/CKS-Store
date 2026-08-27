@@ -1,0 +1,224 @@
+<div id="headeraxcvb">
+  {% if section.settings.promo_text != blank %}
+    <div class="promo-banner">
+      <div class="promo-banner__content">
+        {{ section.settings.promo_text }}
+      </div>
+      <div class="promo-banner__close"></div>
+    </div>
+  {% endif %}
+  <div class="announcemnt-bar" style="background-color: #0172BC;">
+      <div class="contianer">
+          <div class="announcment-link-wraper d-flex j-c-sp-between">
+              
+              <div class="announcment-link-area d-flex width-50">
+                    <div class="hamberger">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                   {% for block in section.blocks %}
+                     {% if block.type == 'announcment-social-icon' %}
+                    <a href="{{ block.settings.contact-link }}" class="secondary-paragraph f-weight-500 c-white d-flex">
+                      <img src="{{ block.settings.contact-icon | img_url: "master" }}" alt="">
+                      {{ block.settings.contact-desc }}
+                    </a>
+                    {% endif %}
+                  {% endfor %}
+                  
+              </div>
+              <nav class="announcemnt-nav-area width-50">
+                {% if section.settings.top_menu != blank %}
+                  <ul class="announcemnt-menu d-flex j-c-end">
+                    {% for link in section.settings.top_menu.links %}
+                      <li>
+                          <a href="{{ link.url }}" class="secondary-paragraph parent-menu f-weight-500 c-white{% if link.links != blank %} announcemnt-has-menu{% endif %}">{{ link.title }}</a>
+                          {% if link.links != blank %}
+                            <ul class="announcemnt-sub-menu">
+                              {% for child_link in link.links %}
+                                <li><a href="{{ child_link.url }}" class="secondary-paragraph f-weight-500 ">{{ child_link.title }}</a></li>
+                              {% endfor %}
+                            </ul>
+                          {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </nav>
+              
+          </div>
+      </div>
+  </div>
+  <div class="header-search-bar-area" style="background-color: #1B1F23; padding: 35px 0;">
+      <div class="contianer">
+          <div class="header-search-bar-flex-area d-flex j-c-sp-between a-i-center">
+              <div class="header-main-logo">
+                  <a href="{{ section.settings.desk-main-log-link }}"><img src="{{ section.settings.desk-main-log | img_url: "master" }}" alt=""></a>
+              </div>
+              <div class="header-search">
+                  <form action="{{ routes.search_url }}" method="get" role="search">
+                      <div class="header-search-flex-area d-flex j-c-center">
+                          <input 
+                            type="search" 
+                            name="q" 
+                            id="search-input" 
+                            placeholder="Search For All Your Kart Racing Needs" 
+                            class="t-capitalize">
+                          <button type="submit" aria-label="Search">
+                              <img src="https://cdn.shopify.com/s/files/1/0737/1610/5472/files/Group_1171275751.svg?v=1735593895" alt="">
+                          </button>
+                      </div>
+                  </form>
+              </div>
+              <div class="header-login-area d-flex j-c-end">
+                
+                  <a href="/account/login"> 
+                      <img src="https://cdn.shopify.com/s/files/1/0737/1610/5472/files/Group_1171275750.svg?v=1735593649" alt="">
+                  </a>
+  
+                {% comment %}
+                  
+                  <a href="/cart"> 
+                      <img src="https://cdn.shopify.com/s/files/1/0737/1610/5472/files/Group_1171275749.svg?v=1735593738" alt="">
+                  </a>
+                {% endcomment %}
+                  
+                
+                  <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+            {% if cart == empty %}
+              <span class="svg-wrapper">{{'cart_bag.svg' | inline_asset_content }}</span>
+            {% else %}
+              <span class="svg-wrapper">{{'cart_bag.svg' | inline_asset_content }}</span>
+            {% endif %}
+          <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+          {%- if cart != empty -%}
+            <div class="cart-count-bubble">
+              {%- if cart.item_count < 100 -%}
+                <span aria-hidden="true">{{ cart.item_count }}</span>
+              {%- endif -%}
+              <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+            </div>
+          {%- endif -%}
+        </a>
+                
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="header-main-nav-area" style="padding: 35px 0;">
+      <div class="contianer">
+          <nav class="header-second-nav">
+            {% if section.settings.bottom_menu != blank %}
+              <ul class="header-second-menu d-flex j-c-center">
+                {% for link in section.settings.bottom_menu.links %}
+                  <li>
+                      <a href="{{ link.url }}" class="c-light-back f-weight-600 primary-paragraph t-capitalize{% if link.links != blank %} header-second-menu__has-menu{% endif %}">{{ link.title }}</a>
+                      {% if link.links != blank %}
+                        <div class="header-second-inner-menu-wraper">
+                            <div class="header-second-inner-menu-width-wraper d-flex j-c-sp-between">
+                              {% for child_link in link.links %}
+                                <div class="header-second-drop-down-column">
+                                    <div class="header-second-drop-down-column-menu">
+                                      
+                                      <ul class="dropdown-title">
+                                          <li><a href="{{ child_link.url }}" class="c-light-back f-weight-700 primary-paragraph">{{ child_link.title }}</a></li>
+                                      </ul>
+                                          {%- if child_link.links != blank -%}
+                                              <ul>
+                                                  {%- for grand_child_link in child_link.links -%}
+                                                      <li>
+                                                      <a href="{{ grand_child_link.url }}">
+                                                          {% if grand_child_link.title contains '| b' %}
+                                                              <b>{{ grand_child_link.title |  remove: '| b'  }}</b>
+                                                          {%  else %}
+                                                              {{ grand_child_link.title }}
+  
+                                                          {% endif %}
+                                                      </a>
+                                                      </li>
+                                                  {%- endfor -%}
+                                              </ul>
+                                          {%- endif -%}
+                                      
+                                    </div>
+                                </div>
+                              {% endfor %}
+                            </div>
+                        </div>
+                      {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </nav>
+      </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Comet Header",
+    "tag": "header",
+    "class": "comet_desktop_main",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Announcement bar"
+      },
+      {
+        "type": "richtext",
+        "id": "promo_text",
+        "label": "Announcement bar text",
+        "info": "Maximum character limit is 170(both desktop and mobile)"
+      },
+      {
+        "type": "link_list",
+        "label": "Top Menu",
+        "id": "top_menu"
+      },
+      {
+        "type": "link_list",
+        "label": "Bottom Menu",
+        "id": "bottom_menu"
+      },
+      {
+        "type": "image_picker",
+        "label": "Desktop Main Logo",
+        "id": "desk-main-log"
+      },
+      {
+        "type": "url",
+        "label": "Desktop Main Logo Link",
+        "id": "desk-main-log-link"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "announcment-social-icon",
+        "name": "Accouncment Social Icon",
+        "settings": [
+          {
+            "type": "image_picker",
+            "label": "Contact Icon",
+            "id": "contact-icon",
+          },
+          {
+            "type": "textarea",
+            "label": "Contact Description",
+            "id": "contact-desc",
+          },
+          {
+            "type": "url",
+            "label": "Contact Link",
+            "id": "contact-link",
+          }
+        ],
+      }
+    ],
+    "presets": [
+      {
+        "name": "Comet Header"
+      }
+    ]
+  }
+{% endschema %}

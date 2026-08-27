@@ -1,0 +1,212 @@
+.hero-banner-with-product {
+  background-color: var(--hero-section-bg, #E5EFF7);
+  padding-top: var(--hero-padding-top, 40px);
+  padding-bottom: var(--hero-padding-bottom, 0);
+}
+
+.hero-banner-with-product__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero-banner-with-product__card {
+  position: relative;
+  border-radius: 20px;
+  overflow: visible;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-banner-with-product__bg-image {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-banner-with-product__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-banner-with-product__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(270deg, #2679C1 0%, #1B1F23 100%);
+  background-blend-mode: multiply;
+  background: linear-gradient(270deg, #1B1F23 0%, rgba(106, 121, 137, 0.6) 45.19%, #1B1F23 81.13%);
+
+
+  /* background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, var(--hero-overlay-opacity, 0.4)) 0%,
+    rgba(0, 0, 0, calc(var(--hero-overlay-opacity, 0.4) * 0.5)) 60%,
+    transparent 100%
+  ); */
+}
+
+.hero-banner-with-product__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 60px;
+  gap: 40px;
+}
+
+.hero-banner-with-product__text {
+  flex: 1;
+  max-width: 500px;
+}
+
+.hero-banner-with-product__subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--hero-subtitle-color, #FFF301);
+  margin: 0 0 8px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.hero-banner-with-product__title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 42px;
+  line-height: 1.1;
+  color: var(--hero-title-color, #FFFFFF);
+  margin: 0 0 16px;
+}
+
+.hero-banner-with-product__description {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--hero-desc-color, #FFFFFF);
+  margin: 0 0 24px;
+  opacity: 0.9;
+}
+
+.hero-banner-with-product__button {
+  display: inline-block;
+  background-color: var(--hero-btn-bg, #FFFFFF);
+  color: var(--hero-btn-text, #1B1F23);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 50px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.hero-banner-with-product__button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.hero-banner-with-product__product-image {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  margin-right: -40px;
+  margin-bottom: -80px;
+  align-self: flex-end;
+}
+
+.hero-banner-with-product__product-img {
+  max-width: 380px;
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+}
+
+.hero-banner-with-product__bottom-bar {
+  height: 12px;
+  background-color: var(--hero-bottom-bar, #1B1F23);
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .hero-banner-with-product__card {
+    min-height: 360px;
+  }
+
+  .hero-banner-with-product__content {
+    padding: 40px;
+  }
+
+  .hero-banner-with-product__title {
+    font-size: 32px;
+  }
+
+  .hero-banner-with-product__product-img {
+    max-width: 280px;
+  }
+
+  .hero-banner-with-product__product-image {
+    margin-right: -20px;
+    margin-bottom: -60px;
+  }
+}
+
+@media (max-width: 749px) {
+  .hero-banner-with-product__card {
+    min-height: auto;
+  }
+
+  .hero-banner-with-product__content {
+    flex-direction: column;
+    padding: 32px 24px;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .hero-banner-with-product__text {
+    max-width: 100%;
+  }
+
+  .hero-banner-with-product__title {
+    font-size: 28px;
+  }
+
+  .hero-banner-with-product__subtitle {
+    font-size: 16px;
+  }
+
+  .hero-banner-with-product__description {
+    font-size: 14px;
+  }
+
+  .hero-banner-with-product__product-image {
+    margin-right: 0;
+    margin-bottom: -40px;
+    align-self: center;
+  }
+
+  .hero-banner-with-product__product-img {
+    max-width: 240px;
+  }
+
+  .hero-banner-with-product__overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, var(--hero-overlay-opacity, 0.4)) 0%,
+      rgba(0, 0, 0, calc(var(--hero-overlay-opacity, 0.4) * 0.3)) 100%
+    );
+  }
+}

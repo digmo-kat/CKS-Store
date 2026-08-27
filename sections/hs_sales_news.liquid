@@ -1,0 +1,68 @@
+<section class="index-sales-new-sec">
+        <div class="contianer">
+            <div class="comet-technical-blog-main-head d-flex j-c-sp-between">
+                <h2 class="f-weight-800 secondary-heading c-light-back f-italc t-capitalize">{{ section.settings.main-head }}</h2>
+                <a href="{{ section.settings.btn-link }}" class="btn-secondary f-weight-600 c-white">{{ section.settings.btn-content }}</a>
+            </div>
+            <div class="comet-technical-blog-flex-holder d-flex a-i-center f-wrap">
+              {% for article in section.settings.sales-blog.articles limit:3 %}
+              <div class="comet-technical-blog-main-block">
+                    <div class="comet-technical-blog-img">
+                        <a href="{{ article.url }}">
+                            <img src="{{ article.image.src | img_url: "master" }}" alt="">
+                        </a>
+                    </div>
+                    <div class="comet-technical-blog-content mh-comet-technical-blog-content">
+                      <div class="comet-technical-blog-content_desc">
+                        <a href="{{ article.url }}">
+                            <h5 class="quanery-heading f-weight-600 c-light-back t-capitalize">{{ article.title | strip_html | truncate: 45, "..." }}</h5>
+                        </a>
+                        <span class="sales-blog-date c-grey f-weight-500 secondary-paragraph "> {{ article.published_at | date: "%B %d, %Y" }} &nbsp; &nbsp; {{ article.content | strip_html | size | divided_by: 200 | ceil }} min read</span>
+                        
+                      </div>
+                      <div class="home-new-product-btn">
+                            <a href="{{ article.url }}" class="c-blue f-weight-600 primary-paragraph">
+                                Read Article
+                                <!-- <img src="https://cdn.shopify.com/s/files/1/0737/1610/5472/files/arrow-right_1.svg?v=1735672266" alt=""> -->
+                              <i class="fa-solid fa-arrow-right-long"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+              {% endfor %}
+            </div>  
+        </div>
+       </section>
+
+{% schema %}
+  {
+    "name": "Sales News",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Main Heading",
+        "id": "main-head"
+      },
+      {
+        "type": "text",
+        "label": "Btn Content",
+        "id": "btn-content"
+      },
+      {
+        "type": "url",
+        "label": "Btn Link",
+        "id": "btn-link"
+      },
+      {
+        "type": "blog",
+        "label": "Sales Blog",
+        "id": "sales-blog"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Sales News"
+      }
+    ]
+  }
+{% endschema %}

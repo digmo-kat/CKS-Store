@@ -1,0 +1,112 @@
+{% assign featured_items = product.metafields.custom.featured_collection_banner.value %}
+
+{% if featured_items %}
+  <section class="featured-collections-banner">
+    <div class="collection-scroll-wrapper" data-category-track>
+      {% for item in featured_items %}
+        <div class="collection-card-wrapper">
+        {% assign featured_collection = item.featured_collection.value %}
+        {% assign featured_image = item.featured_image %}
+        {% assign featured_title = '' %}
+        {% if item.grid_element_title != blank %}
+          {% assign featured_title = item.grid_element_title %}
+        {% else %}
+          {% assign featured_title = featured_collection.title %}
+        {% endif %}
+
+        {% if featured_collection %}
+          <a href="{{ featured_collection.url }}" class="collection-card">
+            {% if featured_image %}
+              <div class="image-wrapper">
+                <img
+                  src="{{ featured_image | image_url: width: 600 }}"
+                  alt="{{ featured_collection.title }}"
+                  class="collection-card__image"
+                >
+              </div>
+            {% endif %}
+            <div class="collection-card__title"><p>{{ featured_title }} <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 17L9 9L0.999999 1" stroke="white"></path>
+              </svg></p></div>
+            </a>
+        {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+      <div class="category-navigation-arrows flex">
+        <div class="left-arrow" data-cat-slider-prev="" style="display: none;">{% render 'left-arrow' %}</div>
+        <div class="right-arrow" data-cat-slider-next="" style="display: block;">{% render 'right-arrow'  %}</div>
+      </div>
+  </section>
+{% endif %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const scrollWrapper = document.querySelector('[data-category-track]');
+  const cards = document.querySelectorAll('.collection-card-wrapper');
+  const cardWidth = cards[0]?.offsetWidth || 300;
+
+  const slideLeftBtn = document.querySelector('[data-cat-slider-prev]');
+  const slideRightBtn = document.querySelector('[data-cat-slider-next]');
+
+  if (!scrollWrapper || !slideLeftBtn || !slideRightBtn) return;
+
+  const updateArrowVisibility = () => {
+    const maxScroll = scrollWrapper.scrollWidth - scrollWrapper.clientWidth;
+    const currentScroll = scrollWrapper.scrollLeft;
+
+    // Use small buffer to deal with rounding inaccuracies
+    const buffer = 10;
+
+    slideLeftBtn.style.display = currentScroll <= buffer ? 'none' : 'block';
+    slideRightBtn.style.display = currentScroll >= maxScroll - buffer ? 'none' : 'block';
+  };
+
+  slideRightBtn.addEventListener('click', () => {
+    scrollWrapper.scrollBy({
+      left: cardWidth,
+      behavior: 'smooth'
+    });
+
+    // Let the scroll finish before checking
+    setTimeout(updateArrowVisibility, 400);
+  });
+
+  slideLeftBtn.addEventListener('click', () => {
+    scrollWrapper.scrollBy({
+      left: -cardWidth,
+      behavior: 'smooth'
+    });
+
+    setTimeout(updateArrowVisibility, 400);
+  });
+
+  // Also update arrows if user scrolls manually (e.g. swiping on mobile)
+  scrollWrapper.addEventListener('scroll', updateArrowVisibility);
+
+  // Initialize state
+  updateArrowVisibility();
+});
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Product Category Banner",
+  "class": "section-collection-list",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Explore more collections"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Category Banner"
+    }
+  ]
+}
+{% endschema %}

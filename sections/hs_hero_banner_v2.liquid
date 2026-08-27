@@ -1,0 +1,70 @@
+<div class="st-hero-v2">
+  <div class="banner-fade-slider-v2">
+    {% for block in section.blocks %}
+      {% if block.type == 'banner-slide' %}
+      <div class="slider-bg-img-v2" style="background-image: url({{ block.settings.banner-img | img_url: "master" }}); background-repeat: no-repeat; background-size: cover;">
+          <div class="contianer">
+              <div class="hero-banner-slider-content-holder-v2">
+                <div class="hero-banner-slider-content-left-side-v2">
+                  <h1 class="primary-heading f-weight-900 f-italc c-white">{{ block.settings.banner-head }}</h1>
+                  <a href="{{ block.settings.btn-link }}" class="btn-primary c-light-back t-capitalize f-weight-600">{{ block.settings.btn-content }}</a>
+                </div>
+                {% if block.settings.banner-right-side-img != blank %}
+                  <div class="hero-banner-slider-content-right-side-v2">
+                    <img src="{{ block.settings.banner-right-side-img | img_url: "master" }}" alt="" height="" width="">
+                  </div>
+                {% endif %}
+              </div>
+          </div>
+      </div>
+        {% endif %}
+      {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Hero Banner V2",
+    "tag": "section",
+    "class": "st-hero-banner-v2-sc",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "banner-slide",
+        "name": "Slider Repeat",
+        "settings": [
+          {
+            "type": "image_picker",
+            "label": "Banner Image",
+            "id": "banner-img"
+          },
+          {
+            "type": "text",
+            "label": "Banner Heading",
+            "id": "banner-head"
+          },
+          {
+            "type": "text",
+            "label": "Btn Content",
+            "id": "btn-content"
+          },
+          {
+            "type": "url",
+            "label": "Btn Link",
+            "id": "btn-link"
+          },
+          {
+            "type": "image_picker",
+            "label": "Banner Right Side Image ",
+            "id": "banner-right-side-img"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Banner V2"
+      }
+    ]
+  }
+{% endschema %}

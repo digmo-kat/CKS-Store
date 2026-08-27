@@ -1,0 +1,57 @@
+<section class="welcome-to-world-sec">
+        <div class="welcome-to-world-flex-area d-flex">
+            <div class="welcome-to-world-left-img-area">
+                <img src="{{ section.settings.car-img | img_url: "master" }}" alt="">
+            </div>
+            <div class="welcome-to-world-right-content-area" style="background-color: {{ section.settings.bg-color }};">
+                <div class="welcome-to-world-content-inner-wraper">
+                    <h2 class="secondary-heading f-weight-800 c-white f-italc t-uppercase">{{ section.settings.welcome-head }}</h2>
+                    <p class=" primary-paragraph f-weight-500 c-white">{{ section.settings.welcome-desc }}</p>
+                    <a href="{{ section.settings.btn-link }}" class="c-blue btn-primary f-weight-600">{{ section.settings.btn-content }}</a>
+                </div>
+            </div>
+        </div>
+       </section>
+
+{% schema %}
+  {
+    "name": "Welcome To World",
+    "settings": [
+      {
+        "type": "image_picker",
+        "label": "Car Image",
+        "id": "car-img"
+      },
+      {
+        "type": "color",
+        "label": "Background Color",
+        "id": "bg-color"
+      },
+      {
+        "type": "textarea",
+        "label": "Welcome Heading",
+        "id": "welcome-head"
+      },
+      {
+        "type": "textarea",
+        "label": "Description",
+        "id": "welcome-desc"
+      },
+      {
+        "type": "text",
+        "label": "Btn Content",
+        "id": "btn-content"
+      },
+      {
+        "type": "url",
+        "label": "Btn Link",
+        "id": "btn-link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Welcome To World"
+      }
+    ]
+  }
+{% endschema %}

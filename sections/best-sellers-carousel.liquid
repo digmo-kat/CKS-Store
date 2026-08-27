@@ -1,0 +1,263 @@
+{{ 'section-best-sellers-carousel.css' | asset_url | stylesheet_tag }}
+
+<section class="best-sellers" data-section-id="{{ section.id }}">
+  <div class="best-sellers__bg">
+    <div class="best-sellers__container">
+      <div class="best-sellers__header">
+        <div class="best-sellers__header-text">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="best-sellers__eyebrow">{{ section.settings.eyebrow }}</p>
+          {%- endif -%}
+          {%- if section.settings.title != blank -%}
+            <h2 class="best-sellers__title">{{ section.settings.title }}</h2>
+          {%- endif -%}
+          {%- if section.settings.subtitle != blank -%}
+            <p class="best-sellers__subtitle">{{ section.settings.subtitle }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="best-sellers__carousel-wrapper">
+        <button class="best-sellers__arrow best-sellers__arrow--prev" aria-label="Previous" type="button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </button>
+
+        <div class="best-sellers__track" id="best-sellers-track-{{ section.id }}">
+          {%- if section.settings.collection != blank -%}
+            {%- assign products = section.settings.collection.products -%}
+          {%- else -%}
+            {%- assign products = collections['all'].products -%}
+          {%- endif -%}
+
+          {%- assign limit = section.settings.products_limit -%}
+          {%- for product in products limit: limit -%}
+            <div class="best-sellers__slide">
+              <span class="best-sellers__number">{{ forloop.index }}</span>
+              <div class="best-sellers__card">
+                <a href="{{ product.url }}" class="best-sellers__card-link">
+                  <div class="best-sellers__image-wrap">
+                    {%- if product.featured_image != blank -%}
+                      {{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'best-sellers__product-img' }}
+                    {%- else -%}
+                      {{ 'product-1' | placeholder_svg_tag: 'best-sellers__placeholder' }}
+                    {%- endif -%}
+                  </div>
+                  {%- if section.settings.show_quick_view -%}
+                    <div class="best-sellers__quick-view">
+                      <span class="best-sellers__quick-view-btn">QUICK VIEW</span>
+                    </div>
+                  {%- endif -%}
+                </a>
+              </div>
+              <div class="best-sellers__product-info">
+                <h3 class="best-sellers__product-title">
+                  <a href="{{ product.url }}">{{ product.title }}</a>
+                </h3>
+                <p class="best-sellers__product-price">{{ product.price | money }}</p>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <button class="best-sellers__arrow best-sellers__arrow--next" aria-label="Next" type="button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="best-sellers__bottom-bar"></div>
+</section>
+
+<script>
+  (function() {
+    const section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
+
+    const track = section.querySelector('.best-sellers__track');
+    const prevBtn = section.querySelector('.best-sellers__arrow--prev');
+    const nextBtn = section.querySelector('.best-sellers__arrow--next');
+
+    if (!track || !prevBtn || !nextBtn) return;
+
+    function getSlideWidth() {
+      const slide = track.querySelector('.best-sellers__slide');
+      if (!slide) return 300;
+      const style = getComputedStyle(track);
+      const gap = parseFloat(style.gap) || 24;
+      return slide.offsetWidth + gap;
+    }
+
+    prevBtn.addEventListener('click', function() {
+      track.scrollBy({ left: -getSlideWidth(), behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', function() {
+      track.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Best Sellers Carousel",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Top 10"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Best Sellers"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "These products are winners"
+    },
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Maximum products",
+      "min": 4,
+      "max": 10,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quick_view",
+      "label": "Show Quick View on hover",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_start",
+      "label": "Background gradient start",
+      "default": "#1a3a5c"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_end",
+      "label": "Background gradient end",
+      "default": "#14263d"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow color",
+      "default": "#FFF301"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Number color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "quick_view_bg",
+      "label": "Quick View button color",
+      "default": "#FFF301"
+    },
+    {
+      "type": "color",
+      "id": "quick_view_text",
+      "label": "Quick View text color",
+      "default": "#1B1F23"
+    },
+    {
+      "type": "color",
+      "id": "bottom_bar_color",
+      "label": "Bottom bar color",
+      "default": "#1B1F23"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 60,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Best Sellers Carousel"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  #shopify-section-{{ section.id }} .best-sellers {
+    --bs-bg-start: {{ section.settings.bg_color_start }};
+    --bs-bg-end: {{ section.settings.bg_color_end }};
+    --bs-eyebrow: {{ section.settings.eyebrow_color }};
+    --bs-title: {{ section.settings.title_color }};
+    --bs-subtitle: {{ section.settings.subtitle_color }};
+    --bs-price: {{ section.settings.price_color }};
+    --bs-number: {{ section.settings.number_color }};
+    --bs-qv-bg: {{ section.settings.quick_view_bg }};
+    --bs-qv-text: {{ section.settings.quick_view_text }};
+    --bs-bottom-bar: {{ section.settings.bottom_bar_color }};
+    --bs-padding-top: {{ section.settings.padding_top }}px;
+    --bs-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+</style>

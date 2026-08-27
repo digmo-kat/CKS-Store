@@ -1,0 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "cart-template",
+      "settings": {
+        "display_special_instructions": true,
+        "display_savings": true,
+        "cart_message": "",
+        "continue_shopping_url": ""
+      }
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "You may also be interested in",
+        "collection_description": true,
+        "collection": "",
+        "collection_style": "grid",
+        "products_per": 6,
+        "products_limit": 6,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "1745604793822213ad": {
+      "type": "apps",
+      "blocks": {
+        "selleasy_lb_upsell_addon_block_WPWfUR": {
+          "type": "shopify:\/\/apps\/selleasy\/blocks\/lb-upsell-addon-block\/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "selleasy_lb_upsell_addon_block_WPWfUR"
+      ],
+      "settings": {}
+    },
+    "1745604813a8ae4b26": {
+      "type": "apps",
+      "blocks": {
+        "selleasy_lb_upsell_fbt_block_ypAzXH": {
+          "type": "shopify:\/\/apps\/selleasy\/blocks\/lb-upsell-fbt-block\/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "selleasy_lb_upsell_fbt_block_ypAzXH"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "featured-collection",
+    "1745604793822213ad",
+    "1745604813a8ae4b26"
+  ]
+}

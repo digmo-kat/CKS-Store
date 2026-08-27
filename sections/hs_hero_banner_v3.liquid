@@ -1,0 +1,178 @@
+<div class="st-banner-v3">
+  <div class="banner-fade-slider-v3">
+    {% for block in section.blocks %}
+      {% if block.type == 'banner-slide' %}
+        <div class="slider-bg-img-v3" style="background-image: url({{ block.settings.banner-img | img_url: "master" }}); background-repeat: no-repeat; background-size: cover;">
+          <div class="contianer">
+            <div class="hero-banner-slider-content-holder-v3">
+              <div class="hero-banner-slider-content-text-img-block">
+                <div class="hero-banner-slider-content-text-img-left-side">
+                  <div class="hero-banner-slider-content-text">
+                    {% if block.settings.sale-label == "yes" %}
+                      <span class="primary-heading f-weight-900 f-italc" style="background-color:{{ block.settings.tag-bg-color }}; color:{{ block.settings.tag-text-color }};">{{ block.settings.tag-text }}</span>
+                    {% endif %}
+                    <h1 class="primary-heading f-weight-900 f-italc" style="color:{{ block.settings.banner-head-color }};">{{ block.settings.banner-head }}</h1>
+                    <a href="{{ block.settings.btn-link }}" class="t-capitalize f-weight-600" 
+                      style="background-color:{{ block.settings.btn-bg-color }}; color:{{ block.settings.btn-color }};">{{ block.settings.btn-content }}</a>
+                  </div>
+                </div>
+                {% if block.settings.right-side-img == "yes" %}
+                  <div class="hero-banner-slider-content-text-img-right-side">
+                    <img src="{{ block.settings.select-right-side-img | img_url: 'master' }}" alt="" width="" height="">
+                  </div>
+                {% endif %}
+              </div>
+              <div class="hero-banner-slider-content-img-grid {% if block.settings.select-columns == 'columns-3' %}grid-cols-3{% endif %} 
+                {% if block.settings.select-columns == 'columns-4' %}grid-cols-4{% endif %}">
+                {% if block.settings.img-1 != blank %}
+                  <img src="{{ block.settings.img-1 | img_url: 'master' }}" alt="" width="" height="">
+                {% endif %}
+                {% if block.settings.img-2 != blank %}
+                  <img src="{{ block.settings.img-2 | img_url: 'master' }}" alt="" width="" height="">
+                {% endif %}
+                {% if block.settings.img-3 != blank %}
+                  <img src="{{ block.settings.img-3 | img_url: 'master' }}" alt="" width="" height="">
+                {% endif %}
+                {% if block.settings.select-columns == 'columns-4' %}
+                  {% if block.settings.img-4 != blank %}
+                    <img src="{{ block.settings.img-4 | img_url: 'master' }}" alt="" width="" height="">
+                  {% endif %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Hero Banner V3",
+    "tag": "section",
+    "class": "st-hero-banner-v3-sc",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "banner-slide",
+        "name": "Slider Repeat",
+        "settings": [
+          {
+            "type": "image_picker",
+            "label": "Banner Image",
+            "id": "banner-img"
+          },
+          {
+            "type": "select",
+            "label": "Want to Show Tag Label",
+            "id": "sale-label",
+            "info": "If you select 'Yes,' please fill in the tag-related fields below. If you select 'No,' these fields can be left empty.",
+            "options": [
+              { "value": "yes", "label": "Yes" },
+              { "value": "no", "label": "No" }
+            ],
+            "default": "no"
+          },
+          {
+            "type": "color",
+            "label": "Tag background color",
+            "id": "tag-bg-color"
+          },
+          {
+            "type": "color",
+            "label": "Tag text color",
+            "id": "tag-text-color"
+          },
+          {
+            "type": "text",
+            "label": "Tag Text like(sale)",
+            "id": "tag-text"
+          },
+          {
+            "type": "color",
+            "label": "Banner Heading color",
+            "id": "banner-head-color"
+          },
+          {
+            "type": "textarea",
+            "label": "Banner Heading",
+            "id": "banner-head"
+          },
+          {
+            "type": "color",
+            "label": "Button background color",
+            "id": "btn-bg-color"
+          },
+          {
+            "type": "color",
+            "label": "Button color",
+            "id": "btn-color"
+          },
+          {
+            "type": "text",
+            "label": "Button Content",
+            "id": "btn-content"
+          },
+          {
+            "type": "url",
+            "label": "Button Link",
+            "id": "btn-link"
+          },
+          {
+            "type": "select",
+            "label": "Want to Show right side image",
+            "id": "right-side-img",
+            "info": "If you select 'Yes,' please select image below. If you select 'No,' then no need to select image.",
+            "options": [
+              { "value": "yes", "label": "Yes" },
+              { "value": "no", "label": "No" }
+            ],
+            "default": "no"
+          },
+          {
+            "type": "image_picker",
+            "label": "Select right side image",
+            "id": "select-right-side-img"
+          },
+          {
+            "type": "select",
+            "label": "Select Columns",
+            "id": "select-columns",
+            "info": "If you select '3 Columns,' add only 3 images below. Otherwise, add all 4 images.",
+            "options": [
+              { "value": "columns-3", "label": "3 Columns" },
+              { "value": "columns-4", "label": "4 Columns" }
+            ],
+            "default": "columns-3"
+          },
+          {
+            "type": "image_picker",
+            "label": "Image 1",
+            "id": "img-1"
+          },
+          {
+            "type": "image_picker",
+            "label": "Image 2",
+            "id": "img-2"
+          },
+          {
+            "type": "image_picker",
+            "label": "Image 3",
+            "id": "img-3"
+          },
+          {
+            "type": "image_picker",
+            "label": "Image 4",
+            "id": "img-4"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Banner V3",
+      }
+    ]
+  }
+{% endschema %}

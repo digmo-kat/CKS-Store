@@ -1,0 +1,135 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "hs_footer_MFFCeG": {
+      "type": "hs_footer",
+      "blocks": {
+        "social_icons_PLriwm": {
+          "type": "social-icons",
+          "settings": {
+            "social-icon-class": "fa-brands fa-facebook-f",
+            "social-icon-link": "https:\/\/www.facebook.com\/CometKartSales",
+            "social-icon-text": "@CometKartSales"
+          }
+        },
+        "social_icons_GtzMic": {
+          "type": "social-icons",
+          "settings": {
+            "social-icon-class": "fa-brands fa-facebook-f",
+            "social-icon-link": "https:\/\/www.facebook.com\/CometRacingEngines",
+            "social-icon-text": "@CometRacingEngines"
+          }
+        },
+        "social_icons_PtAWLL": {
+          "type": "social-icons",
+          "settings": {
+            "social-icon-class": "fa-brands fa-instagram",
+            "social-icon-link": "https:\/\/www.instagram.com\/CometKartSales\/#",
+            "social-icon-text": "@CometKartSales"
+          }
+        },
+        "footer_nav_recywr": {
+          "type": "footer-nav",
+          "settings": {
+            "footer-menu": "utility-footer"
+          }
+        }
+      },
+      "block_order": [
+        "social_icons_PLriwm",
+        "social_icons_GtzMic",
+        "social_icons_PtAWLL",
+        "footer_nav_recywr"
+      ],
+      "settings": {
+        "footer-main-logo": "shopify:\/\/shop_images\/image_3.webp",
+        "footer-main-logo-link": "\/",
+        "news-letter-head": "Sign up for our email list!",
+        "news-letter-desc": "You'll be the first to know about sales, deals, new products, promotions and more. You may unsubscribe at anytime.",
+        "copyright-text": "© 2025 Comet Kart Sales",
+        "digital-text": "<p>Website Design and Development by<\/p>",
+        "digital-text-2": "<p><a href=\"https:\/\/www.digitalmomentum.com\/\" target=\"_blank\" title=\"https:\/\/www.digitalmomentum.com\/\">Digital Momentum<\/a><\/p>",
+        "digital-logo-url": "https:\/\/www.digitalmomentum.com\/",
+        "digital-logo-img": "shopify:\/\/shop_images\/image_7.png"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "footer_0": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Header-Logo.png",
+            "text_align": "left",
+            "social_icons_footer": true
+          }
+        },
+        "page_Kaf34R": {
+          "type": "page",
+          "settings": {
+            "page": "email-sign-up",
+            "social_icons_footer": false
+          }
+        },
+        "empty_4dVcMH": {
+          "type": "empty",
+          "disabled": true,
+          "settings": {
+            "social_icons_footer": false
+          }
+        },
+        "empty_pNPRLG": {
+          "type": "empty",
+          "disabled": true,
+          "settings": {
+            "social_icons_footer": false
+          }
+        },
+        "footer_2": {
+          "type": "link_list",
+          "settings": {
+            "menu": "utility-footer",
+            "social_icons_footer": false
+          }
+        }
+      },
+      "block_order": [
+        "footer_0",
+        "page_Kaf34R",
+        "empty_4dVcMH",
+        "empty_pNPRLG",
+        "footer_2"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".toggle_content {display: block; text-align: center;}",
+        ".footer_menu li,.footer_menu p {margin: 0 0 5px;}",
+        ".footer-text h6 {display: none;}",
+        ".toggle_content {text-align: left;}",
+        "@media screen and (min-width: 768px) {.footer-logo {max-width: 225px !important; } .footer_menu {margin-top: 26px; padding-left: 60px; } .footer-text {margin-top: -15px; }}"
+      ],
+      "settings": {
+        "copyright_text": "",
+        "display_designed_by": false,
+        "display_payment_methods": false,
+        "enable_follow_on_shop": false,
+        "show_locale_selector": false,
+        "show_currency_selector": false
+      }
+    }
+  },
+  "order": [
+    "hs_footer_MFFCeG",
+    "footer"
+  ]
+}

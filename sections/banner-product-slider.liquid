@@ -1,0 +1,180 @@
+{% stylesheet %}
+.banner-product-wrapper{
+  display:flex;
+  gap:40px;
+  align-items:center;
+}
+
+.banner-left{
+  flex:0 0 320px;
+  position:relative;
+  color:#fff;
+}
+
+.banner-left-inner{
+  background-size:cover;
+  background-position:center;
+  padding:60px 30px;
+  min-height:420px;
+  display:flex;
+  align-items:center;
+}
+
+.banner-content{
+  max-width:280px;
+}
+
+.banner-content h2{
+  margin-bottom:15px;
+}
+
+.banner-right{
+  flex:1;
+  overflow:hidden;
+}
+
+.product-card{
+  padding:10px;
+}
+
+.product-card img{
+  width:100%;
+}
+
+.product-title{
+  font-size:14px;
+  margin-top:10px;
+}
+
+.product-price{
+  font-weight:600;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .banner-product-wrapper{
+    flex-direction:column;
+  }
+
+  .banner-left{
+    width:100%;
+  }
+
+  .banner-left-inner{
+    min-height:280px;
+  }
+}
+{% endstylesheet %}
+
+<div class="banner-product-wrapper">
+
+  <!-- LEFT STATIC BANNER -->
+  <div class="banner-left">
+    <div 
+      class="banner-left-inner"
+      style="background-image:url({{ section.settings.banner_image | image_url: width: 800 }})"
+    >
+      <div class="banner-content">
+        <h2>{{ section.settings.title }}</h2>
+        <p>{{ section.settings.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PRODUCT SLIDER -->
+  <div class="banner-right">
+    <div class="product-slider">
+
+      {% assign collection = collections[section.settings.collection] %}
+
+      {% for product in collection.products limit: 12 %}
+        <div class="product-card">
+          <a href="{{ product.url }}">
+            <img 
+              src="{{ product.featured_image | image_url: width: 500 }}"
+              alt="{{ product.title }}"
+            >
+            <div class="product-title">
+              {{ product.title }}
+            </div>
+
+            <div class="product-price">
+              {{ product.price | money }}
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  if (typeof jQuery != "undefined") {
+      alert(2)
+    $('.product-slider').slick({
+      slidesToShow:4,
+      slidesToScroll:1,
+      arrows:true,
+      dots:false,
+      infinite:false,
+      responsive:[
+        {
+          breakpoint:1024,
+          settings:{ slidesToShow:3 }
+        },
+        {
+          breakpoint:768,
+          settings:{ slidesToShow:2 }
+        },
+        {
+          breakpoint:480,
+          settings:{ slidesToShow:1.2 }
+        }
+      ]
+    });
+
+  }
+
+});
+</script>
+
+
+{% schema %}
+{
+  "name": "Banner Product Slider",
+  "settings":[
+    {
+      "type":"image_picker",
+      "id":"banner_image",
+      "label":"Banner Image"
+    },
+    {
+      "type":"text",
+      "id":"title",
+      "label":"Title",
+      "default":"New Collection"
+    },
+    {
+      "type":"textarea",
+      "id":"description",
+      "label":"Description",
+      "default":"Explore our latest products"
+    },
+    {
+      "type":"collection",
+      "id":"collection",
+      "label":"Collection"
+    }
+  ],
+  "presets":[
+    {
+      "name":"Banner Product Slider"
+    }
+  ]
+}
+{% endschema %}

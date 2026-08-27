@@ -1,0 +1,840 @@
+@media (min-width: 1600px) {
+  .hero-banner-slider-content-btn-block.right {
+    padding-right: clamp(130px, 7.813vw, 150px);
+  }
+}
+
+/* @media (min-width: 993px) {
+  ul.announcemnt-sub-menu {
+    opacity: 0;
+    visibility: hidden; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    z-index: 100;
+    transform: translateY(-10px); 
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 310px;
+
+}
+
+ul.announcemnt-sub-menu li a {
+    background-color: #F9F9F9;
+    padding: 16px;
+    display: block;
+}
+
+
+
+.announcemnt-menu li:hover > ul.announcemnt-sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.header-main-nav-area {
+    position: relative;
+    padding: 35px 0;
+}
+
+.header-second-inner-menu-wraper {
+    position: absolute;
+    z-index: 1;
+    background-color: #F9F9F9;
+    width: 100%;
+    top: 59%;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.header-second-inner-menu-width-wraper {
+    max-width: 1230px;
+    padding: 30px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.header-second-drop-down-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.header-second-drop-down-column-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.header-second-menu > li:hover .header-second-inner-menu-wraper {
+    opacity: 1;
+    visibility: visible; 
+    transform: translateY(0);
+}
+} */
+
+@media (max-width: 1180px) {
+    .header-search-flex-area input[type="search"] {
+        max-width: 500px;
+    }
+
+    .announcment-link-area {
+        gap: 30px;
+    }
+
+    .announcment-link-area a {
+        gap: 10px;
+    }
+
+    .home-new-product-img a {
+        padding: 65px 85px;
+        width: 97%;
+        height: 390px;
+    }
+
+}
+
+@media (max-width: 1024px) {
+    .announcment-link-area a img {
+        max-width: 18px;
+        height: 18px;
+    }
+
+    .header-search-flex-area input[type="search"] {
+        padding: 12px;
+        max-width: 450px;
+    }
+    
+    .header-login-area {
+        gap: 25px;
+    }
+
+    .header-search-flex-area.d-flex.j-c-center button {
+        padding: 12px;
+    }
+
+    .announcemnt-menu {
+        gap: 20px;
+    }
+
+    .announcment-link-area {
+        gap: 20px;
+    }
+
+    .announcment-link-area a {
+        gap: 7px;
+    }
+
+    .home-new-product-img a {
+        padding: 50px 75px;
+        width: 97%;
+        height: 350px;
+    }
+
+    .home-new-product-sec {
+        padding: 100px 0 90px 0;
+    }
+
+    .home-new-product-main-head {
+        margin-bottom: 50px;
+    }
+
+    section.home-new-product-sec button.responsive-slick-prev.slick-arrow,
+    section.home-new-product-sec button.responsive-slick-next.slick-arrow {
+        top: -95px;
+    }
+
+  .slider-bg-img {
+    height: 40vh;
+    padding: 140px 0 130px;
+}
+
+  .slider-bg-img .contianer {
+    padding-inline: 30px;
+  }
+  .announcment-link-area a:nth-child(2) {
+    width: 70%;
+}
+  .announcment-link-area a:nth-child(3) {
+    width: 30%;
+}
+      .announcment-link-area {
+        margin-top: 3px;
+    }
+  .hero-banner-slider-content-holder h1 {
+    max-width: 490px;
+}
+  .welcome-to-world-left-img-area img {
+    height: 470px;
+}
+  .footer-social-icon {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+  .slider-bg-img-v2 {
+    height: 530px;
+}
+  .slider-bg-img-v3 {
+    height: 600px;
+  }
+  .hero-banner-slider-content-text-img-right-side img {
+    max-width: 250px;
+    max-height: 230px;
+}
+  .slider-bg-img-v4 {
+    height: 532px;
+  }
+  /* .slider-bg-img-v4 img {
+    object-fit: contain;
+  } */
+  .hero-banner-slider-content-holder-v4 {
+    height: 482px;
+  }
+  .hero-banner-slider-content-btn-block.right {
+    padding-right: 178px;
+  }
+  .st-banner-v4 .slick-dots {
+    bottom: 6px;
+  }
+}
+
+@media (max-width: 992px) {
+    .header-search-bar-flex-area {
+        flex-wrap: wrap;
+        row-gap: 25px;
+    }
+  
+    .header-main-logo {
+        order: 1;
+        width: calc(60% - 8px);
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+
+    .header-login-area {
+        order: 2;
+        width: calc(40% - 7px);
+    }
+
+    .header-search {
+        order: 3;
+        width: 100%;
+    }
+  
+    /* ul.submenu {
+      overflow-y: auto !important;
+    } */
+    .announcemnt-nav-area {
+        display: none;
+    }
+
+    .announcment-link-area {
+        width: 100%;
+    }
+
+    .announcment-link-area a:nth-child(3) {
+        width: 50%;
+        justify-content: end;
+    }
+
+    .announcment-link-area a:nth-child(2) {
+        width: 50%;
+    }
+
+    .header-main-nav-area {
+        display: none;
+    }
+
+    .home-new-product-img a {
+        padding: 50px 55px;
+        height: 314px;
+    }
+
+    .home-new-product-img a img {
+        max-width: 185px;
+        height: 215px;
+    }
+
+    .home-new-product-price {
+        margin: 15px 0 25px 0;
+    }
+
+    .home-new-product-content-wrpaer {
+        margin-top: 25px;
+    }
+
+    .index-sales-new-sec {
+        padding: 70px 0;
+    }
+
+    .footer-logo-area {
+        width: calc(33% - 20px);
+    }
+
+    .footer-nav-area {
+        width: calc(20% - 20px);
+    }
+
+    .footer-sign-up-area {
+        width: calc(47% - 20px);
+    }
+
+    .footer-main-logo a img {
+        max-width: 218px;
+        height: 58px;
+    }
+
+    .digital-logo a img {
+        max-width: 179px;
+        height: 40px;
+    }
+
+    .footer-block-flex-area {
+        gap: 20px;
+        padding: 70px 0 45px 0;
+    }
+
+    .footer-social-icon a img {
+        max-width: 30px;
+        height: 30px;
+    }
+
+    .footer-social-icon {
+        gap: 10px;
+    }
+
+    .footer-social-icon {
+        margin: 35px 0 45px 0;
+    }
+
+    .footer-nav-area ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 18px;
+    }
+
+    .footer-sign-up-area p {
+        margin: 15px 0 30px 0;
+    }
+
+    .footer-sign-up-flexarea button {
+        padding: 10px 25px;
+    }
+
+    .hamberger {
+      display: flex;
+      position: absolute;
+      top: 100px;
+  }
+
+  .hide-overflow {
+    overflow-y: hidden;
+  }
+
+}
+
+@media (max-width: 850px) {
+
+    .home-new-product-img a {
+        padding: 40px 50px;
+        height: 300px;
+    }
+
+    .comet-technical-blog-img a img {
+        max-width: 365px;
+        height: 155px;
+    }
+
+    .comet-technical-blog-main-head {
+        margin-bottom: 40px;
+    }
+
+    .welcome-to-world-right-content-area p {
+        padding: 15px 0 30px 0;
+    }
+
+    .footer-logo-area {
+        width: calc(50% - 20px);
+    }
+
+    .footer-nav-area {
+        width: calc(50% - 20px);
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+    }
+
+    .footer-block-flex-area {
+        flex-wrap: wrap;
+        row-gap: 50px;
+    }
+
+    .footer-social-icon {
+        margin: 25px 0 35px 0;
+    }
+    
+    .footer-sign-up-area p {
+        margin: 10px 0 20px 0;
+    }
+
+    .footer-sign-up-form input[type="email"] {
+        padding: 11px;
+    }
+
+    .footer-main-logo a img {
+        max-width: 200px;
+        height: 55px;
+    }
+
+    .digital-logo a img {
+        max-width: 155px;
+        height: 35px;
+    }
+
+    .footer-sign-up-area {
+        width: 100%;
+        align-items: inherit;
+    }
+    .slider-bg-img-v2 {
+    height: 400px;
+} 
+  .hero-banner-slider-content-right-side-v2 img {
+    object-fit: contain;
+}
+  .st-banner-v3 .slick-dots {
+    bottom: 12px;
+}
+      .slider-bg-img-v3 {
+        height: 560px;
+    }
+  .hero-banner-slider-content-img-grid img {
+    max-height: 200px;
+}
+   .slider-bg-img-v4 {
+        height: 426px;
+    }
+      .hero-banner-slider-content-holder-v4 {
+        height: 382px;
+    }
+  .hero-banner-slider-content-btn-block.right {
+        padding-right: 126px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mob-lgoin-area {
+      gap: 5px;
+    }
+  
+    .header-login-area a:hover {
+      background-color: transparent;
+    }
+    .sales-blog-date {
+      display: block;
+      margin: 8px 0 25px;
+    }
+  
+    .footer-block-flex-area {
+        padding: 60px 0 45px;
+    }
+  
+    .header-search-flex-area input[type="search"] {
+        
+        max-width: 350px;
+    }
+
+    .header-search-flex-area {
+        justify-content: center;
+    }
+
+
+    .header-login-area {
+        width: 10%;
+    }
+
+    .header-search-bar-flex-area {
+        row-gap: 20px;
+    }
+
+    .slider-bg-img {
+        height: 70vh;
+        padding: 125px 0 190px 0;
+    }
+
+  .banner-fade-slider.desktop {
+    display: none;
+  }
+  section.hero-banner .mobile {
+    display: block;
+  }
+
+    .hero-banner-slider-content-holder h1 {
+        margin-bottom: 40px;
+    }
+
+    .home-new-product-img a {
+        width: 98%;
+    }
+
+    .comet-technical-blog-img a img {
+        height: 200px;
+    }
+
+    .comet-technical-blog-main-block {
+        width: calc(50% - 11px);
+    }
+    
+    .welcome-to-world-flex-area.d-flex {
+        flex-direction: column;
+    }
+
+    .welcome-to-world-left-img-area img {
+        height: 330px;
+    }
+  
+    .welcome-to-world-left-img-area,
+    .welcome-to-world-right-content-area {
+        width: 100%;
+    }
+
+    .welcome-to-world-content-inner-wraper {
+        width: 95%;
+        padding: 35px 0;
+    }
+
+    .home-new-product-sec {
+        padding: 80px 0 60px;
+    }
+
+    .home-new-product-img a img {
+      margin: 0 auto;
+    }
+
+    .announcment-link-area a:nth-child(2) {
+      width: 70%;
+    }
+
+    .announcment-link-area a:nth-child(3) {
+      width: 30%;
+    }
+  section.home-new-product-sec button.responsive-slick-next.slick-arrow img {
+    width: 60%;
+  margin: 0 auto;
+}
+
+section.home-new-product-sec button.responsive-slick-prev.slick-arrow img{
+    width: 60%;
+  margin: 0 auto;
+}
+.slider-bg-img-v2 {
+        height: 370px;
+    }
+  .slider-bg-img-v3 {
+        height: 525px;
+    padding: 50px 0 80px
+    }
+  .hero-banner-slider-content-btn-block.right {
+        padding-right: 108px;
+    }
+}
+
+@media (max-width: 650px) {
+  
+    .header-main-logo {
+        width: calc(65% - 8px);
+    }
+  
+    .footer-block-flex-area {
+        padding: 50px 0 45px 0;
+    }
+
+    .footer-bottom-content-flex-area {
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .header-search-flex-area input[type="search"] {
+        padding: 10px;
+        max-width: 300px;
+    }
+
+    .header-search-flex-area.d-flex.j-c-center button {
+        padding: 10px 14px;
+    }
+
+    .header-search-flex-area.d-flex.j-c-center button img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .announcment-link-area a:nth-child(1) {
+        width: 70%;
+    }
+
+    .header-login-area {
+        gap: 15px;
+    }
+
+    .comet-technical-blog-img a img {
+        height: 155px;
+    }
+
+    .comet-technical-blog-main-head {
+        margin-bottom: 30px;
+    }
+
+    .index-sales-new-sec {
+        padding: 60px 0;
+    }
+
+    .footer-block-flex-area {
+      row-gap: 35px;
+    }
+  .footer-social-icon {
+        margin: 25px 0 0;
+    }
+  .home-new-product-content-wrpaer {
+    /* min-height: max-content !important; */
+    height: max-content !important;
+  }
+  .home-new-product-price {
+    /* margin: 0; */
+  }
+  .header-login-area a .cart-count-bubble {
+    right: -10px;
+  }
+  .st-hero-v2 .hero-banner-slider-content-holder {
+    flex-direction: column-reverse;
+    row-gap: 30px;
+  }
+  .hero-banner-slider-content-left-side, .hero-banner-slider-content-right-side {
+    width: 100%;
+  }
+  .hero-banner-slider-content-holder-v2 {
+    flex-direction: column-reverse;
+    row-gap: 20px;
+    align-items: start;
+}
+  .hero-banner-slider-content-left-side-v2, .hero-banner-slider-content-right-side-v2 {
+    width: 100%;
+}
+  .slider-bg-img-v2 {
+        height: 100%;
+        min-height: 600px;
+    }
+  .slider-bg-img-v3 {
+        height: 440px;
+        padding: 30px 0 80px;
+    }
+  .hero-banner-slider-content-holder-v3:has(.hero-banner-slider-content-img-grid.grid-cols-3) {
+    row-gap: 0;
+  }
+  .hero-banner-slider-content-holder-v3:has(.hero-banner-slider-content-img-grid.grid-cols-3) .hero-banner-slider-content-text-img-block {
+    margin-bottom: 0;
+  }
+  .mobile-bg {
+    display: block !important;
+  }
+  .desktop-bg {
+    display: none !important;
+  }
+  .slider-bg-img-v4 {
+    height: 760px;  
+  }
+  .hero-banner-slider-content-holder-v4 {
+        height: 690px;
+    }
+  .hero-banner-slider-content-btn-block.right {
+        padding-right: 0;
+    justify-content: center;
+    }
+  .hero-banner-slider-content-btn-block.left {
+        padding-right: 0;
+    justify-content: center;
+    }
+}
+
+@media (max-width: 550px) {
+    .announcment-link-area {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .announcment-link-area a:nth-child(3),
+    .announcment-link-area a:nth-child(2) {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hamberger {
+        top: 124px;
+        left: 17px;
+    }
+
+    .announcment-link-area {
+        gap: 15px;
+    }
+  
+    .index-sales-new-sec .comet-technical-blog-content {
+        padding: 18px 24px 24px 24px;
+      height: max-content !important;
+    }
+
+  .comet-technical-blog-content {
+    height: max-content !important;
+    min-height: max-content !important;
+  }
+  
+    .home-new-product-img a {
+        width: 100%;
+    }
+
+    .header-search {
+        
+        width: 100%;
+    }
+
+    .header-search-bar-flex-area {
+        flex-wrap: wrap;
+        row-gap: 30px;
+    }
+
+    .header-search-bar-area {
+        padding: 30px 0 !important;
+    }
+
+    .header-search-flex-area input[type="search"] {
+        max-width: 100%;
+    }
+
+    .comet-technical-blog-main-block {
+        width: 100%;
+    }
+
+    .comet-technical-blog-img a img,
+    .index-sales-new-sec .comet-technical-blog-img a img {
+        height: auto;
+        max-width: 100%;
+    }
+
+    .comet-technical-blog-main-head.d-flex.j-c-sp-between {
+        flex-wrap: nowrap;
+        gap: 0;
+      align-items: end;
+    }
+  .comet-technical-blog-main-head.d-flex.j-c-sp-between h2 {
+    width: 55%;
+  }
+}
+
+@media (max-width: 480px) {
+    
+    .header-main-logo a img {
+      max-width: 145px;
+      /*height: 36px;*/
+      height:55px;
+    }
+  
+    .footer-logo-area,
+    .footer-nav-area {
+        width: 100%;
+    }
+
+    .footer-nav-area {
+        align-items: inherit;
+    }
+
+    .footer-nav-area ul {
+        margin-top: 15px;
+    }
+
+    .footer-block-flex-area {
+        padding-bottom: 35px;
+        row-gap: 40px;
+    }
+
+    .announcment-link-area {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .footer-bottom-content-flex-area span {
+        text-align: center;
+    }
+
+    .slider-bg-img {
+        height: 55vh;
+        padding: 138px 0 168px 0;
+    }
+
+    section.hero-banner .slick-dots {
+        bottom: 20px;
+    }
+
+    .hero-banner-slider-content-holder h1 {
+        margin-bottom: 30px;
+      max-width: 350px;
+    }
+
+    .mob-annoucment-bar {
+      padding: 15px 0 9px 0;
+    }
+
+    .mob-menu-cross img {
+      max-width: 25px;
+      height: 40px;
+    }
+
+    .mob-menu-logo a img {
+      max-width: 159px;
+      height: 40px;
+    }
+  section.home-new-product-sec button.responsive-slick-prev.slick-arrow, 
+  section.home-new-product-sec button.responsive-slick-next.slick-arrow {
+    padding: 16px 12px !important;
+    top: -86px;
+  }
+  section.home-new-product-sec button.responsive-slick-prev.slick-arrow {
+    right: 48px;
+    width: 40px;
+  }
+  section.home-new-product-sec button.responsive-slick-next.slick-arrow {
+    width: 40px;
+  }
+  section.home-new-product-sec button.responsive-slick-prev.slick-arrow img{
+    width: 100%;
+  }
+  section.home-new-product-sec button.responsive-slick-next.slick-arrow img{
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 414px) {
+    .header-login-area {
+        width: 14%;
+    }
+
+    .header-main-logo {
+        width: calc(68% - 8px);
+    }
+
+    .announcment-link-area.d-flex.width-50 .secondary-paragraph {
+      font-size: 11px;
+    }
+
+    .announcment-link-area a {
+        gap: 4px;
+    }
+}

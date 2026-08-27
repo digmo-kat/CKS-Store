@@ -1,0 +1,173 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-gallery-template",
+      "blocks": {
+        "block-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/14129375642_55aaf8638b.jpg",
+            "image_link": ""
+          }
+        },
+        "block-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/14132351155_a27f8c4f50.jpg",
+            "image_link": ""
+          }
+        },
+        "image_gEHqyk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/14152417733_905db5221e.jpg",
+            "image_link": ""
+          }
+        },
+        "block-3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/14132618444_e96f9f479e.jpg",
+            "image_link": ""
+          }
+        },
+        "image_tFcqRW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/11819376124_f3b2270699.jpg",
+            "image_link": ""
+          }
+        },
+        "block-4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/11819376004_5893a507c7.jpg",
+            "image_link": ""
+          }
+        },
+        "block-5": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/11819722656_8fdb94fb27.jpg",
+            "image_link": ""
+          }
+        },
+        "block-6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/11818964315_528932a402.jpg",
+            "image_link": ""
+          }
+        },
+        "block-7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/11819721896_0e38fe7b2d.jpg",
+            "image_link": ""
+          }
+        },
+        "block-8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/11819224043_911c36cdd2.jpg",
+            "image_link": ""
+          }
+        },
+        "block-9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/11818961905_7baf668afc.jpg",
+            "image_link": ""
+          }
+        },
+        "block-10": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/11819226423_5860ec3d41.jpg",
+            "image_link": ""
+          }
+        },
+        "image_qLWGY4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/11819722936_e2511e7636.jpg",
+            "image_link": ""
+          }
+        },
+        "image_t49X8H": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/11818963545_abcaaacaf9.jpg",
+            "image_link": ""
+          }
+        },
+        "image_XW9Cp4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/11818962695_103ec96c96.jpg",
+            "image_link": ""
+          }
+        },
+        "image_dMy8i7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/11819722126_cd611c06b3.jpg",
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "block-1",
+        "block-2",
+        "image_gEHqyk",
+        "block-3",
+        "image_tFcqRW",
+        "block-4",
+        "block-5",
+        "block-6",
+        "block-7",
+        "block-8",
+        "block-9",
+        "block-10",
+        "image_qLWGY4",
+        "image_t49X8H",
+        "image_XW9Cp4",
+        "image_dMy8i7"
+      ],
+      "settings": {
+        "show_divider": false,
+        "wide_display": false,
+        "gallery_type": "classic",
+        "grid-size": 4,
+        "enable_lightbox": true
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "disabled": true,
+      "settings": {
+        "wide_display": true,
+        "display_first_name": false,
+        "display_last_name": false,
+        "newsletter_title": "Subscribe",
+        "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more …<\/p>",
+        "newsletter_section_text_align": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "newsletter"
+  ]
+}

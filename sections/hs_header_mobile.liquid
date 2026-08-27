@@ -1,0 +1,105 @@
+<header id="mob-header">
+            <div class="mob-annoucment-bar" style="background-color: #0172BC;">
+             <div class="contianer">
+                 <div class="mob-annoucment-bar-flex-area d-flex a-i-center j-c-sp-between">
+                     <div class="mob-menu-cross">
+                         <img src="https://cdn.shopify.com/s/files/1/0737/1610/5472/files/cross-img.png?v=1735527776" alt="">
+                     </div>
+                     <div class="mob-menu-logo">
+                         <a href="{{ section.settings.mob_logo_link }}"><img src="{{ section.settings.mob_logo_img | img_url: "master" }}" alt=""></a>
+                     </div>
+                     <div class="mob-lgoin-area d-flex a-i-center">
+                         <a href="/account/login"><img src="https://cdn.shopify.com/s/files/1/0737/1610/5472/files/Group_1171275750.svg?v=1735593649" alt=""></a>
+                       {% comment %}
+                         <a href="/cart"><img src="https://cdn.shopify.com/s/files/1/0737/1610/5472/files/Group_1171275749.svg?v=1735593738" alt=""></a>
+                       {% endcomment %}
+
+                        <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+          {% if cart == empty %}
+            <span class="svg-wrapper">{{'cart_bag.svg' | inline_asset_content }}</span>
+          {% else %}
+            <span class="svg-wrapper">{{'cart_bag.svg' | inline_asset_content }}</span>
+          {% endif %}
+        <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+        {%- if cart != empty -%}
+          <div class="cart-count-bubble">
+            {%- if cart.item_count < 100 -%}
+              <span aria-hidden="true">{{ cart.item_count }}</span>
+            {%- endif -%}
+            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+          </div>
+        {%- endif -%}
+      </a>
+                       
+                     </div>
+                 </div>
+             </div>
+         </div>
+  <div class="mob-menu">
+  <div class="contianer">
+   <ul class="mob-main-menu-holder">
+  {% for link in section.settings.top_menu.links %}
+  <li>
+    <a href="{{ link.url }}" class="{% if link.links != blank %}mob-has-menu{% endif %}">{{ link.title }}</a>
+    {% if link.links.size > 0 %}
+    <span class="submenu-toggle"></span>
+    <ul class="submenu">
+      {% for sublink in link.links %}
+      <li>
+        <a href="{{ sublink.url }}" class="{% if sublink.links != blank %}mob-has-menu{% endif %}">{{ sublink.title }}</a>
+        {% if sublink.links.size > 0 %}
+        <span class="submenu-toggle"></span>
+        <ul class="nested-menu">
+          {% for nestedlink in sublink.links %}
+          <li>
+            <a href="{{ nestedlink.url }}" class="{% if nestedlink.links != blank %}mob-has-menu{% endif %}">{{ nestedlink.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+    
+  </div>
+</div>
+  
+</header>
+
+
+{% schema %}
+  {
+    "name": "Mob Header",
+    "settings": [
+      {
+        "type": "link_list",
+        "label": "Top Menu",
+        "id": "top_menu"
+      },
+      {
+        "type": "image_picker",
+        "label": "Mob Logo Image",
+        "id": "mob_logo_img"
+      },
+      {
+        "type": "url",
+        "label": "Mob Logo Link",
+        "id": "mob_logo_link"
+      },
+      {
+        "type": "text",
+        "label": "Degital text 2",
+        "id": "degital-text-2"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Mob Header"
+      }
+    ]
+  }
+{% endschema %}

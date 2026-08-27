@@ -1,0 +1,298 @@
+<script
+  type="application/json"
+  data-section-type="collection-list"
+  data-section-id="{{ section.id }}"
+>
+</script>
+
+{%- assign id = section.id -%}
+
+{% comment %} Content settings {% endcomment %}
+{%- assign title = section.settings.title | escape -%}
+{%- assign blocks = section.blocks -%}
+{% comment %} End content settings {% endcomment %}
+
+{% comment %} Advanced {% endcomment %}
+{%- assign css_class = section.settings.css_class -%}
+{%- assign custom_css = section.settings.custom_css -%}
+
+{% comment %} Section specific CSS {% endcomment %}
+{% style %}
+  {%
+    render 'css-loop',
+    css: custom_css,
+    id: id
+  %}
+{% endstyle %}
+
+{% if blocks.size > 0 %}
+  <section class="{{ css_class }}">
+    <div class="section">
+      <div class="container">
+        {% if title != blank %}
+          <div class="home-new-product-main-head width-100 d-flex j-c-sp-between">
+            <h2 class="f-weight-800 secondary-heading c-light-back f-italc t-capitalize">{{ title }}</h2>
+            {% if section.settings.button_label != blank %}
+              <a
+                {% if section.settings.link != blank %}href="{{ section.settings.link }}"{% endif %}
+                class="btn-secondary f-weight-600 c-white"
+              >
+                {{ section.settings.button_label }}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div class="one-whole column">
+          <div class="list-collections-wrapper">
+            <div class="list-collections equal-columns--outside-trim is-flex is-flex-wrap">
+              {% for block in blocks %}
+                {% comment %} Content settings {% endcomment %}
+                {%- assign collection = collections[block.settings.feature_collection] -%}
+                {%- assign image = block.settings.image -%}
+                {% comment %} End content settings {% endcomment %}
+
+                {% if image %}
+                  {%- assign collection_image = image -%}
+                  {%- assign collection_image_alt = image.alt | escape -%}
+                {% elsif collection.image != blank %}
+                  {%- assign collection_image = collection.image -%}
+                  {%- assign collection_image_alt = collection.title | escape -%}
+                {% else collection.empty? == false %}
+                  {%- assign collection_image = collection.products.first.featured_image -%}
+                  {%- assign collection_image_alt = collection.products.first.featured_image.alt | escape -%}
+                {% endif %}
+
+                <div class="{% render 'column-width', value: section.settings.frontpage_collections_per_row %} column {% if section.settings.collection_count == blank and section.settings.frontpage_collections_title == blank %}blank{% endif %} thumbnail {% if settings.mobile_products_per_row == '1' %} medium-down--one-half small-down--one-whole {% else %} medium-down--one-half small-down--one-half {% endif %}" {{ block.shopify_attributes }}>
+                  <a href="{{ collection.url }}">
+                  <div class="product-wrap {% if block.settings.as_bg %} show-img-bg {% endif %}">
+                     
+
+                      <div class="collection-info__caption {% if settings.thumbnail_hover_enabled %}hidden{% endif %}">
+                        <span class="title">
+                          {% if block.settings.title != blank %}
+                            {{ block.settings.title }}
+                          {% else %}
+                            {% if collection != blank %}
+                              {{ collection.title }}
+                            {% else %}
+                              {{ 'homepage.onboarding.collection_title' | t }}
+                            {% endif %}
+                          {% endif %}
+                        </span>
+
+                        {% if block.settings.btn_text != blank %}
+                          <a href="{{ collection.url }}" class="btn-primary">{{ block.settings.btn_text }}</a>
+                        {% endif %}
+                      </div>
+
+                      {% if collection_image != blank %}
+                        <div class="image__container">
+                          {%
+                            render 'image-element',
+                            image: collection_image,
+                            alt: collection_image_alt,
+                            object_fit: section.settings.align_height,
+                            max_height: section.settings.collection_height,
+                            focal_point: collection_image.presentation.focal_point,
+                          %}
+                        </div>
+                      {% else %}
+                        {% capture num %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                        {{ 'collection-' | append: num | placeholder_svg_tag: 'placeholder-svg' }}
+                      {% endif %}
+
+                      {% comment %} <a href="{{ collection.url }}" class="hidden-product-link">
+                        {% if block.settings.title != blank %}
+                          {{ block.settings.title }}
+                        {% else %}
+                          {% if collection != blank %}
+                            {{ collection.title }}
+                          {% else %}
+                            {{ 'homepage.onboarding.collection_title' | t }}
+                          {% endif %}s
+                        {% endif %}
+                      </a> {% endcomment %}
+
+                      {% if settings.thumbnail_hover_enabled %}
+                        <div class="thumbnail-overlay">
+                          
+                            {% if block.settings.title != blank %}
+                              {{ block.settings.title }}
+                            {% else %}
+                              {% if collection != blank %}
+                                {{ collection.title }}
+                              {% else %}
+                                {{ 'homepage.onboarding.collection_title' | t }}
+                              {% endif %}
+                            {% endif %}
+
+                          <div class="info">
+                            <div class="collection-details">
+                              <span class="title">
+                                {% if block.settings.title != blank %}
+                                  {{ block.settings.title }}
+                                {% else %}
+                                  {% if collection != blank %}
+                                    {{ collection.title }}
+                                  {% else %}
+                                    {{ 'homepage.onboarding.collection_title' | t }}
+                                  {% endif %}
+                                {% endif %}
+                              </span>
+                            </div>
+                            
+                            {% if block.settings.btn_text != blank %}
+                              <span   class="btn-primary">{{ block.settings.btn_text }}</span>
+                            {% endif %}
+                          </div>
+                        </div>
+                      {% endif %}
+                    </div>                    
+
+
+                    </a>
+                </div>                
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% if section.settings.align_height == true %}
+  <style>
+    #shopify-section-{{ section.id }} .list-collections .thumbnail img {
+      max-height: {{ section.settings.collection_height }}px;
+    }
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collection list",
+  "class": "shopify-section--collection-list",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Collection list"
+    },
+    {
+      "type": "checkbox",
+      "id": "align_height",
+      "label": "Align height of collection images",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "collection_height",
+      "label": "Collection image height",
+      "min": 150,
+      "max": 400,
+      "step": 10,
+      "default": 200,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "frontpage_collections_per_row",
+      "label": "Collections per row",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Advanced"
+    },
+    {
+      "type": "paragraph",
+      "content": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Class"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "feature_collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "checkbox",
+          "id" : "as_bg",
+          "label": "Display image as full background?",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label" : "Title",
+          "info": "If no title provided Collection title will be used"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label" : "Button Text",
+          "default" : "Shop Now"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection list",
+      "category": "Collection",
+      "blocks": [
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [ "*" ]
+  }
+}
+
+{% endschema %}

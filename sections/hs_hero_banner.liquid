@@ -1,0 +1,115 @@
+<section class="hero-banner">
+  <!-- desktop -->
+            <div class="banner-fade-slider desktop">
+              {% for block in section.blocks %}
+                {% if block.type == 'banner-slide' %}
+                <div class="slider-bg-img" style="background-image: url({{ block.settings.banner-img | img_url: "master" }}); background-repeat: no-repeat; background-size: cover;">
+                    <div class="contianer">
+                        <div class="hero-banner-slider-content-holder">
+                            <h1 class="primary-heading f-weight-900 f-italc c-white">{{ block.settings.banner-head }}</h1>
+                            <a href="{{ block.settings.btn-link }}" class="btn-primary c-light-back t-capitalize f-weight-600">{{ block.settings.btn-content }}</a>
+                        </div>
+                    </div>
+                </div>
+                  {% endif %}
+                {% endfor %}
+            </div>
+  <!-- mobile -->
+  <div class="banner-fade-slider mobile">
+              {% for block in section.blocks %}
+                {% if block.type == 'banner-slide' %}
+                <div class="slider-bg-img block-{{ forloop.index }}" style="background-image: url({{ block.settings.banner-img-mobile | img_url: "master" }}); background-repeat: no-repeat; background-size: cover;">
+                    <div class="contianer">
+                        <div class="hero-banner-slider-content-holder">
+                            <h1 class="primary-heading f-weight-900 f-italc c-white">{{ block.settings.banner-head }}</h1>
+                            <a href="{{ block.settings.btn-link }}" class="btn-primary c-light-back t-capitalize f-weight-600">{{ block.settings.btn-content }}</a>
+                        </div>
+                    </div>
+                </div>
+
+                  {% endif %}
+                {% endfor %}
+            </div>
+    </section>
+{% for block in section.blocks %}
+  <style>
+    @media (max-width: 768px) {
+      .banner-fade-slider.mobile .slider-bg-img.block-{{ forloop.index }} {
+        padding:unset;
+      }
+      .banner-fade-slider.mobile .slider-bg-img.block-{{ forloop.index }} .contianer {
+        display:flex;
+        height:100%;
+        padding:5vw;
+        align-items:{{ block.settings.position-mobile }};
+      }
+    }
+  </style>
+{% endfor %}
+                  
+{% schema %}
+  {
+    "name": "Hero Banner",
+    "settings": [
+      
+    ],
+    "blocks": [
+      {
+        "type": "banner-slide",
+        "name": "Slider Repeat",
+        "settings": [
+          {
+            "type": "image_picker",
+            "label": "Banner Image",
+            "id": "banner-img"
+          },
+          {
+            "type": "image_picker",
+            "label": "Banner Image Mobile",
+            "id": "banner-img-mobile"
+          },
+          {
+            "type": "select",
+            "id": "position-mobile",
+            "label": "Mobile Vertical Positioning.",
+            "options": [
+              {
+                "value": "flex-start;",
+                "label": "Top"
+              },
+              {
+                "value": "center",
+                "label": "Middle"
+              },
+              {
+                "value": "flex-end",
+                "label": "Bottom"
+              }
+            ],
+            "default": "flex-end"
+          },
+          {
+            "type": "text",
+            "label": "Banner Heading?",
+            "id": "banner-head"
+          },
+          {
+            "type": "text",
+            "label": "Btn Content",
+            "id": "btn-content"
+          },
+          {
+            "type": "url",
+            "label": "Btn Link",
+            "id": "btn-link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Banner"
+      }
+    ]
+  }
+{% endschema %}

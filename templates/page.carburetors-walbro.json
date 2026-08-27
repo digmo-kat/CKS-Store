@@ -1,0 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-template",
+      "disabled": true,
+      "settings": {}
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "disabled": true,
+      "settings": {
+        "wide_display": true,
+        "display_first_name": false,
+        "display_last_name": false,
+        "newsletter_title": "Subscribe",
+        "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more …<\/p>",
+        "newsletter_section_text_align": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "collection_list_zLafDf": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_ARaGUF": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "walbro-wb3a-yamaha-kt100-carb",
+            "image": "shopify:\/\/shop_images\/wb3acarb_5000x_d2b0ddc0-4dfd-4e5a-b3a5-e01831d950c9.jpg"
+          }
+        },
+        "collection_nKUmUL": {
+          "type": "collection",
+          "settings": {
+            "feature_collection": "walbro-wa55-yamaha-kt100-small-carb",
+            "image": "shopify:\/\/shop_images\/wa55carb-01_5000x_cec9280b-4d57-469c-9851-2678d99f8c3c.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "collection_ARaGUF",
+        "collection_nKUmUL"
+      ],
+      "settings": {
+        "title": "Walbro Carburetors & Carb Parts - Collection",
+        "align_height": true,
+        "collection_height": 200,
+        "frontpage_collections_per_row": 3,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "newsletter",
+    "collection_list_zLafDf"
+  ]
+}

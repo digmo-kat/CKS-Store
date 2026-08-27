@@ -1,0 +1,210 @@
+{{ 'section-hero-banner-with-product.css' | asset_url | stylesheet_tag }}
+
+<section class="hero-banner-with-product" data-section-id="{{ section.id }}">
+  <div class="hero-banner-with-product__container">
+    <div class="hero-banner-with-product__card">
+      {%- if section.settings.background_image != blank -%}
+        <div class="hero-banner-with-product__bg-image">
+          {{ section.settings.background_image | image_url: width: 1400 | image_tag: loading: 'lazy', class: 'hero-banner-with-product__bg-img' }}
+          <div class="hero-banner-with-product__overlay"></div>
+        </div>
+      {%- endif -%}
+
+      <div class="hero-banner-with-product__content">
+        <div class="hero-banner-with-product__text">
+          {%- if section.settings.subtitle != blank -%}
+            <p class="hero-banner-with-product__subtitle">{{ section.settings.subtitle }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.title != blank -%}
+            <h2 class="hero-banner-with-product__title">{{ section.settings.title }}</h2>
+          {%- endif -%}
+
+          {%- if section.settings.description != blank -%}
+            <p class="hero-banner-with-product__description">{{ section.settings.description }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.button_text != blank -%}
+            <a
+              href="{{ section.settings.button_url }}"
+              class="hero-banner-with-product__button"
+            >
+              {{ section.settings.button_text }}
+            </a>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.product_image != blank -%}
+          <div class="hero-banner-with-product__product-image">
+            {{ section.settings.product_image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'hero-banner-with-product__product-img' }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-banner-with-product__bottom-bar"></div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner With Product",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40,
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "New Release"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Product Name"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum eu nibh sed tempor."
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Product Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image (overlaps banner)"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#FFF301"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#1B1F23"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section background color",
+      "default": "#E5EFF7"
+    },
+    {
+      "type": "color",
+      "id": "bottom_bar_color",
+      "label": "Bottom bar color",
+      "default": "#1B1F23"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner With Product"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  #shopify-section-{{ section.id }} .hero-banner-with-product {
+    --hero-subtitle-color: {{ section.settings.subtitle_color }};
+    --hero-title-color: {{ section.settings.title_color }};
+    --hero-desc-color: {{ section.settings.description_color }};
+    --hero-btn-bg: {{ section.settings.button_bg_color }};
+    --hero-btn-text: {{ section.settings.button_text_color }};
+    --hero-section-bg: {{ section.settings.section_bg_color }};
+    --hero-bottom-bar: {{ section.settings.bottom_bar_color }};
+    --hero-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    --hero-padding-top: {{ section.settings.padding_top }}px;
+    --hero-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+</style>

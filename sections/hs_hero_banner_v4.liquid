@@ -1,0 +1,90 @@
+<div class="st-banner-v4">
+  <div class="banner-fade-slider-v4">
+    {% for block in section.blocks %}
+      {% if block.type == 'banner-slide' %}
+        <div class="slider-bg-img-v4">
+          <img src="{{ block.settings.banner-img | img_url: "master" }}" alt="" width="" height="" class="desktop-bg">
+          <img src="{{ block.settings.mobile-banner-img | img_url: "master" }}" alt="" width="" height="" class="mobile-bg">
+          <div class="hero-banner-slider-content-block">
+            <div class="contianer">
+              <div class="hero-banner-slider-content-holder-v4">
+                <div class="hero-banner-slider-content-btn-block 
+                  {% if block.settings.btn-location == 'left' %} left {% endif %}
+                  {% if block.settings.btn-location == 'center' %} center {% endif %}
+                  {% if block.settings.btn-location == 'right' %} right {% endif %}">
+                  <a class="hero-banner-slider-content-btn" href="{{ block.settings.btn-url }}"
+                    style="background-color:{{ block.settings.btn-bg-color }} ; color:{{ block.settings.btn-text-color }} ;">
+                  {{ block.settings.btn-label }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>  
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Hero Banner V4",
+    "tag": "section",
+    "class": "st-hero-banner-v4-sc",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "banner-slide",
+        "name": "Slider Repeat",
+        "settings": [
+          {
+            "type": "image_picker",
+            "label": "Banner Image",
+            "id": "banner-img"
+          },
+          {
+            "type": "image_picker",
+            "label": "Mobile Banner Image",
+            "id": "mobile-banner-img"
+          },
+          {
+            "type": "select",
+            "label": "Button Location",
+            "id": "btn-location",
+            "options": [
+              { "value": "left", "label": "Left" },
+              { "value": "center", "label": "Center" },
+              { "value": "right", "label": "Right" },
+            ],
+            "default": "right"
+          },
+          {
+            "type": "color",
+            "id": "btn-bg-color",
+            "label": "Button Background Color"
+          },
+          {
+            "type": "color",
+            "id": "btn-text-color",
+            "label": "Button Label Text Color"
+          },
+          {
+            "type": "text",
+            "id": "btn-label",
+            "label": "Button Label Text"
+          },
+          {
+            "type": "url",
+            "id": "btn-url",
+            "label": "Button URL"
+          },
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Banner V4",
+      }
+    ]
+  }
+{% endschema %}

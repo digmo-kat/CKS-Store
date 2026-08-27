@@ -1,0 +1,576 @@
+<script
+  type="application/json"
+  data-section-type="blog-template"
+  data-section-id="{{ section.id }}"
+>
+</script>
+
+{% if current_tags %}
+  {% assign banner_title = current_tags %}
+{% else %}
+  {% assign banner_title = blog.title %}
+{% endif %}
+
+{% if section.settings.image != blank %}
+  {%
+    render 'template-banner',
+    image: section.settings.image,
+    mobile_image: section.settings.mobile_image,
+    background_style: section.settings.caption_content_background,
+    wide_display: section.settings.wide_display,
+    banner_title: banner_title,
+    banner_subheading: section.settings.subtitle,
+    show_caption: true,
+  %}
+{% endif %}
+
+<section class="most-recent-post">
+  {% for article in blog.articles %}
+    {% assign theBack = article | image_url: width: 1000 %}
+    <a href="{{ article.url }}" class="wrap-most-recent">
+      <div class="the-tags">{% for tag in article.tags %}{{ tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
+      <div class="recent-date">{{ article.created_at | date: '%B %d, %Y' }}</div>
+      <div class="recent-title"><h1>{{ article.title }}</h1></div>
+      <div class="recent-excerpt">{{ article.excerpt }}</div>
+      <div class="recent-url"><span class="blog__read-more-button global-button global-button--text">Read More</span></div>
+    </a>
+    {% break %}
+  {% endfor %}
+  <style>
+    .most-recent-post {
+      background-image:linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.8) 100%),url("{{ theBack }}");
+      background-color:#00000080;
+      background-size: cover;
+      background-position: center;
+    }
+    .most-recent-post .wrap-most-recent {
+      display: block;
+      padding:100px 0px;
+      width:70%;
+      margin:0px auto;
+      color:#fff;
+      text-decoration: none;
+    }
+    .most-recent-post .wrap-most-recent:hover {
+      text-decoration: none;
+    }
+    .most-recent-post .wrap-most-recent .the-tags {
+      font-size:20px;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+    .most-recent-post .wrap-most-recent .recent-date {
+      font-size:14px;
+      font-weight:normal;
+      margin-bottom:25px;
+    }
+    .most-recent-post .wrap-most-recent .recent-title h1 {
+      font-size:50px;
+      line-height:45px;
+      font-weight:800;
+      color:#fff;
+      text-transform:uppercase;
+      margin-bottom:25px;
+    }
+    .most-recent-post .wrap-most-recent .recent-excerpt {
+      font-size:16px;
+      font-weight:normal;
+      max-width: 600px;
+      margin-bottom:25px;
+    }
+    .most-recent-post .wrap-most-recent span {
+      color: inherit !important;
+    }
+    .most-recent-post .wrap-most-recent .blog__read-more-button {
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .most-recent-post .wrap-most-recent .blog__read-more-button:hover {
+      background: #fff !important;
+      color: #056fb7 !important;
+      border-color: #fff !important;
+    }
+  </style>
+</section>
+
+<style>
+  .blog-template-wrapper .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  .article-card-link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 15px !important;
+    float: none !important;
+    border-radius: 8px;
+    background: #fff;
+  }
+  .article-card-link:hover {
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+  }
+  .article-image-wrap {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    background: #f0f0f0;
+  }
+  .article-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .article-card-link .article-tags {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 6px;
+  }
+  .article-card-link .article__title {
+    font-size: 0.85em;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.3em;
+    height: calc(1.3em * 3 + 4px);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #207bbf;
+    color: #056fb7;
+    padding-bottom: 0;
+  }
+  .article-card-link .blog_meta {
+    font-size: 13px;
+    color: #666;
+    margin-top: auto;
+    padding-top: 8px;
+  }
+  .article-card-link .excerpt {
+    font-size: 14px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: #333;
+  }
+  @media only screen and (max-width: 798px) {
+    .blog-template-wrapper .container {
+      grid-template-columns: 1fr;
+    }
+    .most-recent-post .wrap-most-recent {
+      width: 90% !important;
+      padding: 60px 0 !important;
+    }
+    .most-recent-post .wrap-most-recent .recent-title h1 {
+      font-size: 32px !important;
+      line-height: 34px !important;
+    }
+  }
+  @media only screen and (min-width: 799px) and (max-width: 1024px) {
+    .blog-template-wrapper .container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+{% paginate blog.articles by section.settings.blog_posts_per_page %}
+<section class="section QQ">
+  <div class="container content">
+    {% if section.settings.image == blank %}
+      <div class="one-half column">
+        {% if current_tags %}
+          <h1 class="blog-title blog-tags--true">
+            <a href="/blogs/{{ blog.handle }}/tagged/{{ current_tags | handleize }}" title="{{ blog.title | escape }}">{{ current_tags }}</a>
+          </h1>
+        {% else %}
+          <h1 class="blog-title">{{ blog.title }}</h1>
+          {% if section.settings.subtitle %}
+            <p class="subtitle">{{ section.settings.subtitle }}</p>
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="{% if section.settings.image == blank %}one-half{% else %}one-whole{% endif %} column section_select medium-down--one-whole">
+      {% if section.settings.blog_tags %}
+          <select name="tag_filter" id="blog_filter" class="blog_filter">
+            <option {% unless current_tags %}selected="selected"{% endunless %} value="{{ blog.url }}">{{ 'blogs.general.view_all' | t }}</option>
+            {% for tag in blog.all_tags %}
+              <option {% if current_tags contains tag %}selected="selected"{% endif %} value="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</option>
+            {% endfor %}
+          </select>
+      {% endif %}
+    </div>
+
+    {% unless section.settings.image != blank %}
+      <div class="one-whole column">
+        <div class="feature-divider"></div>
+      </div>
+    {% endunless %}
+
+    {% comment %} Check to see if sidebar should be enabled {% endcomment %}
+    {% if section.blocks.size > 0 %}
+      {%- assign sidebar = true -%}
+    {% else %}
+      {%- assign sidebar = false -%}
+    {% endif %}
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+          {% for article in blog.articles %}
+            {
+              "@type": "ListItem",
+              "position": "{{ forloop.index | json }}",
+              "url": "{{ shop.url }}{{ article.url }}",
+              "name": "{{ article.title }}"
+            } {%- unless forloop.last -%},{%- endunless -%}
+          {% endfor %}
+        ]
+      }
+    </script>
+
+    <div class="blog-template-wrapper is-flex is-flex-wrap">
+      <div class="has-sidebar-option sidebar-enabled--{{ sidebar }}">
+        <div class="container one-whole">
+          {% for article in blog.articles %}
+            {% if forloop.first %}{% continue %}{% endif %}
+              <a href="{{ article.url }}" class="{% render 'column-width', value: section.settings.blog_posts_per_row %} column medium-down--one-whole article article-card-link">
+                <div class="article-image-wrap">
+                  {% if article.image != blank %}
+                    <img
+                      src="{{ article.image | image_url: width: 600 }}"
+                      alt="{{ article.image.alt | escape }}"
+                      loading="lazy"
+                      width="600"
+                      height="{{ 600 | divided_by: article.image.aspect_ratio | round }}"
+                    >
+                  {% endif %}
+                </div>
+
+                {% if section.settings.blog_tags %}
+                  <div class="blog_meta tags article-tags">
+                    {% for tag in article.tags %}
+                      <span>{{ tag }}</span>{% unless forloop.last %}, {% endunless %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
+                <h2 class="article__title">{{ article.title }}</h2>
+
+                <p class="blog_meta">
+                  {% if section.settings.blog_author %}
+                    <span>{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+                  {% endif %}
+
+                  {% if section.settings.blog_date %}
+                    <span>{{ article.published_at | date: format: "month_day_year" }}</span>
+                  {% endif %}
+
+                  {% if section.settings.read_time %}
+                    {%
+                      render 'include-read-time',
+                      article: article,
+                    %}
+                  {% endif %}
+
+                  {% if section.settings.blog_comment_count %}
+                    {% if settings.disqus_enabled %}
+                      <span>
+                        {{ 'blogs.counts.comments_with_count' | t: count: 0 }}
+                      </span>
+                    {% elsif article.comments_enabled? and article.comments_count > 0 %}
+                      <span>
+                        {{ 'blogs.counts.comments_with_count' | t: count: article.comments_count }}
+                      </span>
+                    {% endif %}
+                  {% endif %}
+                </p>
+
+                {% if section.settings.excerpt_display != 'none' and article.excerpt != blank %}
+                  <div class="excerpt">
+                    {{ article.excerpt | strip_html }}
+                  </div>
+                {% endif %}
+              </a>
+          {% endfor %}
+        </div>
+      </div>
+
+      {%
+        render 'blog-sidebar',
+        blog_handle: blog.handle,
+      %}
+    </div>
+
+    <div class="one-whole column">
+      {%
+        render 'pagination',
+        paginate: paginate,
+      %}
+    </div>
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog",
+  "class": "shopify-section--blog-template under-menu",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner"
+    },
+    {
+      "type": "checkbox",
+      "id": "wide_display",
+      "label": "Wide display",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner image",
+      "info": "1800 x 800px recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile banner image",
+      "info": "Display a different image on mobile screens. This only appears when the desktop image is set."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading"
+    },
+    {
+      "type": "select",
+      "id": "caption_content_background",
+      "label": "Text contrast technique",
+      "default": "original",
+      "info": "Improve legibility by applying a contrast technique to your banner’s text.",
+      "options": [
+        {
+          "value": "original",
+          "label": "None"
+        },
+        {
+          "value": "darken_bg",
+          "label": "Darken banner image"
+        },
+        {
+          "value": "text_box",
+          "label": "Solid box"
+        },
+        {
+          "value": "translucent_text_box",
+          "label": "Translucent box"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "blog_posts_per_row",
+      "label": "Blog posts per row",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "blog_posts_per_page",
+      "label": "Blog posts per page",
+      "min": 1,
+      "max": 50,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_tags",
+      "label": "Show blog post tags"
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_author",
+      "label": "Show author"
+    },
+    {
+      "type": "checkbox",
+      "id": "read_time",
+      "label": "Show estimated read time",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_date",
+      "label": "Show date",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_comment_count",
+      "label": "Show comment count",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "read_more_link",
+      "label": "Show continue reading link for blog post excerpts",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "excerpt_display",
+      "label": "Excerpt display",
+      "default": "full_excerpt",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "full_excerpt",
+          "label": "Full excerpt"
+        },
+        {
+          "value": "truncated_excerpt",
+          "label": "Truncated excerpt"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Sidebar"
+    },
+    {
+      "type": "paragraph",
+      "content": "Create a sidebar by adding content blocks."
+    },
+    {
+      "type": "checkbox",
+      "id": "toggle",
+      "label": "Collapse sidebar content",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "post_tags",
+      "name": "Blog post tags",
+      "limit": 1
+    },
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "custom_menu_linklist",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter sign up form",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "newsletter_title",
+          "label": "Heading",
+          "default": "Subscribe"
+        },
+        {
+          "type": "richtext",
+          "id": "newsletter_text",
+          "label": "Subheading",
+          "default": "<p>Sign up to get the latest on sales, new releases and more …</p>"
+        }
+      ]
+    },
+    {
+      "type": "page",
+      "name": "Page",
+      "settings": [
+        {
+          "type": "page",
+          "id": "content_page",
+          "label": "Page"
+        }
+      ]
+    },
+    {
+      "type": "recent_posts",
+      "name": "Recent blog posts",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "blog_post_count",
+          "label": "Display blog posts",
+          "options": [
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "5",
+              "label": "5"
+            },
+            {
+              "value": "10",
+              "label": "10"
+            }
+          ],
+          "default": "10"
+        }
+      ]
+    },
+    {
+      "type": "search",
+      "name": "Search form",
+      "limit": 1
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Text area can be used for details about blog authors or general information.</p>"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}
