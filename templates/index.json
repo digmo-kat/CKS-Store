@@ -63,14 +63,13 @@
         "banner_slide_Jz3Hrn": {
           "type": "banner-slide",
           "name": "Labor Day 2026",
-          "disabled": true,
           "settings": {
             "banner-img": "shopify://shop_images/Comet-1440x686-Hero-New.png",
             "banner-img-mobile": "shopify://shop_images/Comet-440x513-Hero-New_1.png",
             "position-mobile": "flex-start;",
             "banner-head": "Save 10% - Shop The Labor Day Sale!",
             "btn-content": "Shop Now",
-            "btn-link": "shopify://collections/new-products"
+            "btn-link": "shopify://collections/labor-day-sale"
           }
         },
         "banner_slide_GAjdxn": {
